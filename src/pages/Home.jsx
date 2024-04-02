@@ -4,7 +4,11 @@ export const Home = () => {
       <div className="home-banner">
         <form>
           <label>
-            <input className="search-bar" type="text" placeholder="Search for Cards..." />
+            <input
+              className="search-bar"
+              type="text"
+              placeholder="Search for Cards..."
+            />
           </label>
         </form>
         <div>
@@ -19,6 +23,7 @@ export const Home = () => {
         <div>Deck 3</div>
         <div>Deck 4</div>
         <div>Deck 5</div>
+        <div>Deck 6</div>
       </div>
     </>
   );

@@ -9,6 +9,11 @@
   margin-bottom: 1.5rem;
 }
 
+.nav-bar div {
+  font-weight: 700;
+  font-size: small;
+}
+
 .nav-navigation {
   display: flex;
   gap: 1rem;
@@ -35,13 +40,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: start;
+  justify-content: center;
   align-items: start;
+  align-content: flex-start;
+  padding: 3rem;
+  text-align: center;
 }
 
 .deck-area > div {
   border: 1px solid white;
   height: 10rem;
   width: 30%;
-  margin: 1rem;
 }

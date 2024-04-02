@@ -7,8 +7,11 @@ export const NavBar = () => {
         <Link to="/">
           <div>Logo</div>
         </Link>
+        <Link to="/">
+          <div>Home</div>
+        </Link>
         <Link to="/deck">
-          <div>Decks</div>
+          <div>My Decks</div>
         </Link>
         <Link to="/deck">
           <div>+New Deck+</div>

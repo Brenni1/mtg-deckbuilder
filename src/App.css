@@ -27,6 +27,7 @@ button {
   caret-color: var(--accent-color);
 }
 
-/* a:hover {
-  color: red;
-} */
+a:hover,
+a > div:hover {
+  color: var(--font-hover-color);
+}

@@ -60,9 +60,9 @@
   cursor: pointer;
 }
 
-.burger-menu-items a > div:hover {
-  color: red;
-}
+/* .burger-menu-items a > div:hover {
+  color: var(--font-hover-color);
+} */
 
 @media (min-width: 500px) {
   .burger-menu-items {

@@ -6,12 +6,19 @@ export const HomeBanner = () => {
   return (
     <>
       <div className="home-banner">
-        <div className="banner-background-img" style={{ backgroundImage: "url(" + banner + ")" }}></div>
-        <div className="banner-fade fade-top"></div>
+        <div
+          className="banner-background-img"
+          style={{ backgroundImage: "url(" + banner + ")" }}
+        ></div>
+        <div className="banner-fade fade-top" />
         <div className="banner-form">
           <form>
             <label>
-              <input className="banner-search-bar" type="text" placeholder="Search for Cards..." />
+              <input
+                className="banner-search-bar"
+                type="text"
+                placeholder="Search for Cards..."
+              />
             </label>
           </form>
           <div className="banner-btns">
@@ -19,7 +26,7 @@ export const HomeBanner = () => {
             <button>Deck Folder</button>
           </div>
         </div>
-        <div className="banner-fade fade-bottom"></div>
+        <div className="banner-fade fade-bottom" />
       </div>
     </>
   );

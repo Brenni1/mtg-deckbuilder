@@ -1,4 +1,4 @@
-import cardsJson from "../assets/120cards.json";
+import cardsJson from "../../assets/120cards.json";
 // const link = "https://cards.scryfall.io/small/front/8/6/86bf43b1-8d4e-4759-bb2d-0b2e03ba7012.jpg?1562242171";
 export const Deck = () => {
   return (

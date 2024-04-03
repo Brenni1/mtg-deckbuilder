@@ -1,10 +1,10 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { AboutUs } from "./pages/AboutUs.jsx";
-import { Home } from "./pages/Home.jsx";
-import { NavBar } from "./components/NavBar";
-import { Deck } from "./pages/Deck.jsx";
-import { UserProfile } from "./pages/UserProfile.jsx";
+import { AboutUs } from "./pages/about-us/AboutUs.jsx";
+import { Home } from "./pages/home/Home.jsx";
+import { NavBar } from "./components/navbar/NavBar.jsx";
+import { Deck } from "./pages/deck/Deck.jsx";
+import { UserProfile } from "./pages/user-profile/UserProfile.jsx";
 
 function App() {
   return (

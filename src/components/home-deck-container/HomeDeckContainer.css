@@ -1,0 +1,18 @@
+.deck-area {
+  background-color: #181818;
+  height: 30rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: start;
+  align-content: flex-start;
+  padding: 2rem;
+  text-align: center;
+}
+
+.deck-area > div {
+  border: 1px solid white;
+  height: 10rem;
+  width: 30%;
+}

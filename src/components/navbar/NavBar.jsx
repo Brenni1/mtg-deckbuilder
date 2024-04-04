@@ -6,8 +6,7 @@ import { ThemeContext } from "../../context/theme.context.jsx";
 import menuImg from "../../assets/imgs/menu.png";
 import menuWhiteImg from "../../assets/imgs/more.png";
 import userImg from "../../assets/imgs/user.png";
-import userWhiteImg from "../../assets/imgs/user2.png";
-// import moonWhiteImg from "../../assets/imgs/moon_white.png";
+import userWhiteImg from "../../assets/imgs/user_white.png";
 import moonOutlineImg from "../../assets/imgs/moon_outline.png";
 import moonImg from "../../assets/imgs/moon_black.png";
 import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
@@ -25,11 +24,20 @@ export const NavBar = () => {
     <nav className="nav-bar" data-theme={theme}>
       <div className="nav-navigation">
         <Link to="/">
-          <img className="logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="" />
+          <img
+            className="logo-img"
+            src={theme === "dark" ? dragonWhiteImg : dragonImg}
+            alt=""
+          />
         </Link>
 
         <div className="burger-menu-items">
-          <img className="burger-btn" src={theme === "dark" ? menuWhiteImg : menuImg} alt="hamburger-menu" onClick={handleDropdownBtn} />
+          <img
+            className="burger-btn"
+            src={theme === "dark" ? menuWhiteImg : menuImg}
+            alt="hamburger-menu"
+            onClick={handleDropdownBtn}
+          />
           <div className={`dropdown-content ${!showDropdown ? "hide" : ""}`}>
             <Link to="/">
               <div>Home</div>
@@ -38,17 +46,26 @@ export const NavBar = () => {
               <div>My Decks</div>
             </Link>
             <Link to="/about-us">
-              <div>AboutUs</div>
+              <div>About Us</div>
             </Link>
           </div>
         </div>
       </div>
       <div className="nav-user">
         <Link to="/user">
-          <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="" />
+          <img
+            className="user-img"
+            src={theme === "dark" ? userWhiteImg : userImg}
+            alt=""
+          />
         </Link>
         <div>
-          <img className="moon-img" src={theme === "dark" ? moonOutlineImg : moonImg} alt="" onClick={toggleTheme} />
+          <img
+            className="moon-img"
+            src={theme === "dark" ? moonOutlineImg : moonImg}
+            alt=""
+            onClick={toggleTheme}
+          />
         </div>
       </div>
     </nav>

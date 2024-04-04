@@ -18,7 +18,7 @@
 [data-theme="light"] {
   --main-bg-color: rgb(191, 191, 191);
   --alt-bg-color: #a5a5a5;
-  --dark-bg-color: #fff;
+  --dark-bg-color: var(--alt-bg-color);
   --main-font-color: black;
   --form-font-color: black;
   --accent-color: rgb(138, 90, 0);

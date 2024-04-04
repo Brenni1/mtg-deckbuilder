@@ -1,13 +1,12 @@
 .deck-area {
   background-color: var(--main-bg-color);
-  height: 30rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   align-items: start;
   align-content: flex-start;
-  padding: 2rem;
+  padding: 2rem 1rem 6rem 1rem;
   text-align: center;
 }
 

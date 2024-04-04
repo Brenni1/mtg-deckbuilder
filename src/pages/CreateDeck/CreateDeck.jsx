@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./CreateDeck.css";
 
 function CreateDeck({ onCreate }) {
   const [deck, setDeck] = useState({

@@ -1,40 +1,35 @@
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import menuImg from "../../assets/imgs/more.png";
-import userImg from "../../assets/imgs/user2.png";
-import moonWhiteImg from "../../assets/imgs/moon_white.png";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/theme.context.jsx";
+import menuImg from "../../assets/imgs/menu.png";
+import menuWhiteImg from "../../assets/imgs/more.png";
+import userImg from "../../assets/imgs/user.png";
+import userWhiteImg from "../../assets/imgs/user2.png";
+// import moonWhiteImg from "../../assets/imgs/moon_white.png";
 import moonOutlineImg from "../../assets/imgs/moon_outline.png";
-import dragonImg from "../../assets/imgs/logo-dragon-white.png";
+import moonImg from "../../assets/imgs/moon_black.png";
+import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
+import dragonImg from "../../assets/imgs/logo-dragon.png";
 
 export const NavBar = () => {
-  const [darkModeImg, setDarkModeImg] = useState(moonWhiteImg);
-  const [darkMode, setDarkMode] = useState(true);
   const [showDropdown, setShowDropDown] = useState(false);
-
-  const handleDarkMode = () => {
-    if (darkMode) {
-      setDarkModeImg(moonOutlineImg);
-      setDarkMode(false);
-    } else {
-      setDarkModeImg(moonWhiteImg);
-      setDarkMode(true);
-    }
-  };
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleDropdownBtn = () => {
     setShowDropDown(!showDropdown);
   };
 
   return (
-    <nav className="nav-bar">
+    <nav className="nav-bar" data-theme={theme}>
       <div className="nav-navigation">
         <Link to="/">
-          <img className="logo-img" src={dragonImg} alt="" />
+          <img className="logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="" />
         </Link>
 
         <div className="burger-menu-items">
-          <img className="burger-btn" src={menuImg} alt="hamburger-menu" onClick={handleDropdownBtn} />
+          <img className="burger-btn" src={theme === "dark" ? menuWhiteImg : menuImg} alt="hamburger-menu" onClick={handleDropdownBtn} />
           <div className={`dropdown-content ${!showDropdown ? "hide" : ""}`}>
             <Link to="/">
               <div>Home</div>
@@ -50,10 +45,10 @@ export const NavBar = () => {
       </div>
       <div className="nav-user">
         <Link to="/user">
-          <img className="user-img" src={userImg} alt="" />
+          <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="" />
         </Link>
         <div>
-          <img className="moon-img" src={darkModeImg} alt="" onClick={handleDarkMode} />
+          <img className="moon-img" src={theme === "dark" ? moonOutlineImg : moonImg} alt="" onClick={toggleTheme} />
         </div>
       </div>
     </nav>

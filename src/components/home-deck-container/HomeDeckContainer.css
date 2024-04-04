@@ -1,5 +1,5 @@
 .deck-area {
-  background-color: #181818;
+  background-color: var(--main-bg-color);
   height: 30rem;
   display: flex;
   flex-wrap: wrap;
@@ -12,7 +12,7 @@
 }
 
 .deck-area > div {
-  border: 1px solid white;
+  border: 1px solid var(--box-border-color);
   height: 10rem;
   width: 30%;
 }

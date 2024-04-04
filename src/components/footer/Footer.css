@@ -1,0 +1,19 @@
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--dark-bg-color);
+  padding: 2rem;
+}
+
+.footer > div {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-disclaimer > p {
+  text-align: center;
+  font-size: 0.8rem;
+}

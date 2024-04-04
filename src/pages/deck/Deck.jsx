@@ -8,7 +8,7 @@ export const Deck = () => {
       <div className="cards-container">
         {cardsJson.map((card, index) => (
           <div className="card" key={index}>
-            <img src={card.image_uris ? card.image_uris.small : card.card_faces[0].image_uris.small} alt={card.name} />
+            <img src={card.image_uris ? card.image_uris.border_crop : card.card_faces[0].image_uris.border_crop} alt={card.name} />
 
             {card.name}
           </div>

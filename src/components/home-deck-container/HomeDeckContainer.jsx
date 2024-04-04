@@ -8,12 +8,13 @@ export const HomeDeckContainer = () => {
 
   return (
     <div className="deck-area" data-theme={theme}>
-      <DeckThumbnail />
-      <DeckThumbnail />
-      <DeckThumbnail />
-      <DeckThumbnail />
-      <DeckThumbnail />
-      <DeckThumbnail />
+      <DeckThumbnail deckImg="7" />
+      <DeckThumbnail deckImg="2" />
+      <DeckThumbnail deckImg="3" />
+      <DeckThumbnail deckImg="4" />
+      <DeckThumbnail deckImg="5" />
+      <DeckThumbnail deckImg="6" />
+      {/* <DeckThumbnail deckImg="7" /> */}
     </div>
   );
 };

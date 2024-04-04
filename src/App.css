@@ -8,7 +8,7 @@
   --form-font-color: white;
   --accent-color: orange;
   --font-hover-color: var(--accent-color);
-  --box-border-color: white;
+  --box-border-color: #5a5a5a;
   --box-shadow-color: #181818;
 
   --banner-fade-top: 70%;
@@ -23,7 +23,7 @@
   --form-font-color: black;
   --accent-color: rgb(138, 90, 0);
   --font-hover-color: var(--accent-color);
-  --box-border-color: black;
+  --box-border-color: #181818;
   --box-shadow-color: #181818;
 
   --banner-fade-top: 30%;

@@ -26,8 +26,8 @@
   --box-border-color: black;
   --box-shadow-color: #181818;
 
-  --banner-fade-top: 40%;
-  --banner-fade-bottom: 60%;
+  --banner-fade-top: 30%;
+  --banner-fade-bottom: 70%;
 }
 
 * {

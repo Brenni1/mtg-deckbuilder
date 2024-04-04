@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-.deck-area > div {
+.deck-area > * {
   border: 1px solid var(--box-border-color);
   height: 10rem;
   width: 30%;

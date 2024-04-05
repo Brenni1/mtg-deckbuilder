@@ -49,23 +49,38 @@ export const NavBar = () => {
         </div>
       </div>
       <div className="nav-user">
-        <Link to="/signup">
-          <div>Sign Up</div>
-        </Link>
+        {!isLoggedIn ? (
+          <Link to="/signup">
+            <div>
+              <i className="fa-solid fa-user-plus" />
+              <div>Sign Up</div>
+            </div>
+          </Link>
+        ) : null}
 
         {!isLoggedIn ? (
           <Link to="/login">
-            <div>Login</div>
+            <div>
+              <i className="fa-solid fa-arrow-right-to-bracket" />
+              <div>Login</div>
+            </div>
           </Link>
         ) : null}
         {isLoggedIn ? (
           <Link to="/">
-            <div onClick={handleLogout}>Logout</div>
+            <div onClick={handleLogout}>
+              <i className="fa-solid fa-arrow-right-from-bracket" />
+              <div>Logout</div>
+            </div>
           </Link>
         ) : null}
-        <Link to="/user">
-          <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="" />
-        </Link>
+
+        {isLoggedIn ? (
+          <Link to="/user">
+            <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="" />
+          </Link>
+        ) : null}
+
         <div>
           <img className="moon-img" src={theme === "dark" ? moonOutlineImg : moonImg} alt="" onClick={toggleTheme} />
         </div>

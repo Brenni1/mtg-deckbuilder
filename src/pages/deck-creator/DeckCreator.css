@@ -1,10 +1,14 @@
-/* .deck-creator {
-  height: 50rem;
-} */
+.deck-creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
 .deck-info {
+  width: 100%;
   height: 35vh;
-  padding: 2rem 2rem;
+  padding: 2rem;
   background-color: var(--main-bg-color);
   display: flex;
   flex-direction: column;
@@ -27,12 +31,15 @@
 }
 
 .deck-control {
-  height: 10vh;
-  padding: 2rem 2rem;
+  width: 100%;
+  padding: 1rem 2rem;
   background-color: var(--light-bg-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid var(--box-border-color);
+  border-bottom: 1px solid var(--box-border-color);
+  margin-bottom: 0.5rem;
 }
 
 .deck-control > div {
@@ -40,7 +47,29 @@
   column-gap: 1rem;
 }
 
+.deck-control-inputs {
+  width: 30%;
+}
+
+.deck-control form {
+  width: 100%;
+}
+
+.deck-control input {
+  width: 100%;
+  border: 1px solid var(--box-border-color);
+}
+
+.deck-control-actions div {
+  display: flex;
+  column-gap: 0.5rem;
+}
+
 .deck-cards {
+  width: 100%;
+  padding: 2rem;
   height: 50rem;
-  background-color: rgb(93, 23, 23);
+  background-color: var(--light-bg-color);
+  border-top: 1px solid var(--box-border-color);
+  border-bottom: 1px solid var(--box-border-color);
 }

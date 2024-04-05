@@ -25,16 +25,13 @@ export const HomeBanner = () => {
   return (
     <div data-theme={theme}>
       <div className="home-banner">
-        <div
-          className="banner-background-img"
-          style={{ backgroundImage: `url(${banner})` }}
-        ></div>
+        <div className="banner-background-img" style={{ backgroundImage: `url(${banner})` }}></div>
         <div className="banner-fade fade-top" />
         <div className="banner-form">
           <form onSubmit={handleSearch}>
             <label>
               <input
-                className="banner-search-bar"
+                className="search-bar"
                 type="text"
                 placeholder="Search for Cards..."
                 value={searchTerm}
@@ -43,10 +40,7 @@ export const HomeBanner = () => {
             </label>
           </form>
           <div className="banner-btn-container">
-            <button
-              className="btn new-deck"
-              onClick={() => nav("/create-deck")}
-            >
+            <button className="btn new-deck" onClick={() => nav("/create-deck")}>
               <i className="fa-solid fa-plus" />
               New Deck
             </button>

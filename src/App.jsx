@@ -41,8 +41,15 @@ function App() {
           }
         />
 
-        <Route path="/create-deck" element={<CreateDeck />} />
-        <Route path="/deck/xyz" element={<DeckCreator />} />
+        <Route
+          path="/create-deck"
+          element={
+            <IsProtected>
+              <CreateDeck />
+            </IsProtected>
+          }
+        />
+        <Route path="/deck/:id" element={<DeckCreator />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

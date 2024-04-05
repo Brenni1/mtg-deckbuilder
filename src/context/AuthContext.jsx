@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 //This is creating the context
 const AuthContext = createContext();
 
@@ -10,7 +10,7 @@ const AuthWrapper = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const nav = useNavigate();
   //this function checks if there is a token and if so, if it is valid
   const authenticateUser = async () => {
     //check the localStorage for the token
@@ -23,7 +23,7 @@ const AuthWrapper = ({ children }) => {
             authorization: `Bearer ${theToken}`,
           },
         });
-        console.log("from the authenticate user function", response.data);
+        console.log("response.data: from AuthContext.jsx", response.data);
         setUser(response.data);
         setIsLoading(false);
         setIsLoggedIn(true);
@@ -32,6 +32,7 @@ const AuthWrapper = ({ children }) => {
         setUser(null);
         setIsLoading(false);
         setIsLoggedIn(false);
+        nav("/");
       }
     } else {
       setUser(null);
@@ -52,7 +53,7 @@ const AuthWrapper = ({ children }) => {
     await authenticateUser();
   };
   return (
-    //the value is basically the frig, where all the food is stored
+    //the value is basically the fridge, where all the food is stored
     <AuthContext.Provider
       value={{
         user,

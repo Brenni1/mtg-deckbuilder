@@ -2,40 +2,37 @@ import "./SignUp.css";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/theme.context.jsx";
+import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
+import dragonImg from "../../assets/imgs/logo-dragon.png";
 
 export const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const { theme } = useContext(ThemeContext);
 
   const nav = useNavigate();
-  //this is the onSubmit function
+
   const handleSignup = async (event) => {
     event.preventDefault();
 
-    //this is where we create the form data and add all the properties to it
-    const myFormData = new FormData();
-    // const image = event.target.image.files[0];
-    // myFormData.append("imageUrl", image);
-    myFormData.append("name", name);
-    myFormData.append("email", email);
-    myFormData.append("password", password);
-
-    // const userToCreate = { name, email, password };
+    const userToCreate = { name, email, password };
     try {
-      const response = await axios.post("http://localhost:5005/auth/register", myFormData);
+      const response = await axios.post("http://localhost:5005/auth/register", userToCreate);
       console.log("you created a user", response.data);
-      //only if you create the new user, then you navigate to the login page
-      nav("/");
+      nav("/login");
     } catch (err) {
-      console.log("there was an error signing up", myFormData, err.response.data.errorMessage);
-      setError(err.response.data.errorMessage);
+      console.log("there was an error signing up", userToCreate, err.response.data);
+      setError(err.response.data.error);
     }
   };
   return (
-    <div>
-      <h2>Sign up with us</h2>
+    <div data-theme={theme} className="sign-page">
+      <img className="sign-logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="" />
+      <h2>Sign Up Here</h2>
       <form onSubmit={handleSignup}>
         <label>
           User Name:
@@ -48,7 +45,7 @@ export const SignUp = () => {
           />
         </label>
         <label>
-          Email:
+          <div>Email:</div>
           <input
             type="email"
             value={email}
@@ -67,10 +64,7 @@ export const SignUp = () => {
             }}
           />
         </label>
-        {/* <label>
-          Profile Image:
-          <input type="file" name="image" />
-        </label> */}
+
         <button className="btn">Sign Up</button>
       </form>
       {error ? <h4 className="error-message">{error}</h4> : null}

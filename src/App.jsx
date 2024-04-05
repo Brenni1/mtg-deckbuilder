@@ -9,6 +9,11 @@ import { useContext } from "react";
 import { ThemeContext } from "./context/theme.context.jsx";
 import { CreateDeck } from "./pages/create-deck/CreateDeck.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
+import { DeckCreator } from "./pages/deck-creator/DeckCreator.jsx";
+import { Login } from "./pages/login/Login.jsx";
+import { IsProtected } from "./components/is-protected/IsProtected.jsx";
+import { SignUp } from "./pages/signup/SignUp.jsx";
+
 function App() {
   const theme = useContext(ThemeContext);
 
@@ -18,9 +23,28 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/deck" element={<Deck />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/user" element={<UserProfile />} />
+        <Route
+          path="/about-us"
+          element={
+            <IsProtected>
+              <AboutUs />
+            </IsProtected>
+          }
+        />
+
+        <Route
+          path="/user"
+          element={
+            <IsProtected>
+              <UserProfile />
+            </IsProtected>
+          }
+        />
+
         <Route path="/create-deck" element={<CreateDeck />} />
+        <Route path="/deck/xyz" element={<DeckCreator />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       <Footer />
     </div>

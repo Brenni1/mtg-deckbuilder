@@ -12,6 +12,7 @@ function ThemeProviderWrapper(props) {
     }
   };
 
+  // eslint-disable-next-line react/prop-types
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{props.children}</ThemeContext.Provider>;
 }
 

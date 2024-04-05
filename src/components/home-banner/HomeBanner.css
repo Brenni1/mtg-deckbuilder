@@ -16,6 +16,7 @@
   z-index: -1;
   background-size: cover;
   background-position: center 37%;
+  background-repeat: no-repeat;
 }
 
 .banner-fade {

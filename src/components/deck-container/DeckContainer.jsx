@@ -1,4 +1,4 @@
-import "./HomeDeckContainer.css";
+import "./DeckContainer.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/theme.context.jsx";
 import { DeckThumbnail } from "../../components/deck-thumbnail/DeckThumbnail.jsx";

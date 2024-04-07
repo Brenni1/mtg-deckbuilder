@@ -7,6 +7,8 @@ import { ThemeContext } from "../../context/theme.context.jsx";
 import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
 import dragonImg from "../../assets/imgs/logo-dragon.png";
 
+import { useLocation } from "react-router-dom";
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +16,8 @@ export const Login = () => {
   const { authenticateUser } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
   const nav = useNavigate();
+  const location = useLocation();
+  const previousUrl = location.state;
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -23,17 +27,19 @@ export const Login = () => {
         "http://localhost:5005/auth/login",
         userToLogin
       );
-      console.log("you logged in", response.data);
+      console.log("you logged in successfully", response.data);
 
       localStorage.setItem("authToken", response.data.authToken);
 
       await authenticateUser();
-      nav("/");
+
+      nav(previousUrl ? previousUrl : "/");
     } catch (err) {
       console.log("there was an error logging in", err.response.data);
       setError(err.response.data.errorMessage);
     }
   };
+
   return (
     <div data-theme={theme} className="sign-page">
       <img

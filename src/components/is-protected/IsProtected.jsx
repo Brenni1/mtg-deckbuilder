@@ -2,11 +2,15 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.jsx";
 import { useEffect } from "react";
+
+import { useLocation } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 export const IsProtected = ({ children }) => {
   const nav = useNavigate();
   const { isLoading, isLoggedIn } = useContext(AuthContext);
-  console.log("Are we logged in?", isLoggedIn);
+  const location = useLocation();
+
+  console.log("Logged in:", isLoggedIn);
 
   useEffect(() => {
     if (isLoading) {
@@ -15,8 +19,8 @@ export const IsProtected = ({ children }) => {
     }
 
     if (!isLoggedIn) {
-      console.log("logged in false");
-      nav("/login");
+      console.log("Not logged in!");
+      nav("/login", { state: location.pathname });
     }
   }, [isLoading]);
 

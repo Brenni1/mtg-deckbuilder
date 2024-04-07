@@ -28,7 +28,7 @@
   --accent-color: rgb(193, 125, 0);
   --font-hover-color: var(--accent-color);
   --box-border-color: #181818;
-  --box-shadow-color: #181818;
+  /* --box-shadow-color: none; */
 
   --banner-fade-top: 30%;
   --banner-fade-bottom: 70%;

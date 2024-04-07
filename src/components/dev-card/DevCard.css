@@ -1,0 +1,9 @@
+.dev-card .thumb-deck-info > a {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.dev-card .thumb-deck-info img {
+  width: 2rem;
+}

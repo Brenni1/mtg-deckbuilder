@@ -10,17 +10,21 @@
   background-position: 50% 15%;
   background-size: 100%;
   background-repeat: no-repeat;
-  box-shadow: 2rem 0 5rem 3rem var(--main-bg-color) inset;
+  box-shadow: 2rem 0 5rem 3rem var(--box-shadow-color) inset;
   display: flex;
   padding: 1rem;
   transition: all 0.4s ease-in-out;
   cursor: pointer;
 }
 
+.deck-thumbnail * {
+  color: var(--light-font-color);
+}
+
 .deck-thumbnail:hover {
   background-size: 110%;
   border-color: var(--accent-color);
-  box-shadow: 2rem 0 5rem 3.7rem var(--main-bg-color) inset;
+  box-shadow: 2rem 0 5rem 3.7rem var(--box-shadow-color) inset;
 }
 
 .deck-details {

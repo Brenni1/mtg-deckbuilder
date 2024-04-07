@@ -19,15 +19,22 @@ export const DeckCreator = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="deck-creator" data-theme={theme}>
-      <div className="deck-info" style={{ "--background-img": `url(${deckImg4})` }}>
+    <div className="deck-creator">
+      <div
+        className="deck-info"
+        style={{ "--background-img": `url(${deckImg4})` }}
+      >
         <div className="deck-name">
           <h1>Title of Deck</h1>
         </div>
         <div className="deck-user-container">
           <Link to="/user">
             <div className="deck-user-img">
-              <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="" />
+              <img
+                className="user-img"
+                src={theme === "dark" ? userWhiteImg : userImg}
+                alt=""
+              />
             </div>
           </Link>
           <div>{user ? user.name : "no user found"}</div>
@@ -40,13 +47,21 @@ export const DeckCreator = () => {
         <div className="deck-control-inputs">
           <form>
             <label>
-              <input className="search-bar" type="text" placeholder="Search for Cards..." />
+              <input
+                className="search-bar"
+                type="text"
+                placeholder="Search for Cards..."
+              />
             </label>
           </form>
 
           <form>
             <label>
-              <input className="search-bar" type="text" placeholder="Filter Cards..." />
+              <input
+                className="search-bar"
+                type="text"
+                placeholder="Filter Cards..."
+              />
             </label>
           </form>
         </div>

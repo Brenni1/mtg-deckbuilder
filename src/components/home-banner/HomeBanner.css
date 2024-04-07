@@ -27,11 +27,19 @@
 }
 
 .fade-top {
-  background: linear-gradient(180deg, var(--main-bg-color) 0, hsla(0, 0%, 60%, 0) var(--banner-fade-top));
+  background: linear-gradient(
+    180deg,
+    var(--main-bg-color) 0,
+    hsla(0, 0%, 60%, 0) var(--banner-fade-top)
+  );
 }
 
 .fade-bottom {
-  background: linear-gradient(180deg, hsla(0, 0%, 60%, 0) var(--banner-fade-bottom), var(--main-bg-color) 100%);
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 60%, 0) var(--banner-fade-bottom),
+    var(--main-bg-color) 100%
+  );
 }
 
 .banner-form {
@@ -70,7 +78,8 @@ label {
 
 .search-bar:focus {
   border-color: var(--accent-color);
-  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(255, 98, 0, 0.669);
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset,
+    0 0 8px rgba(255, 98, 0, 0.669);
   outline: 0 none;
 }
 

@@ -1,13 +1,10 @@
 import "./DeckContainer.css";
-import { useContext } from "react";
-import { ThemeContext } from "../../context/theme.context.jsx";
+
 import { DeckThumbnail } from "../../components/deck-thumbnail/DeckThumbnail.jsx";
 
 export const HomeDeckContainer = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
-    <div className="deck-area" data-theme={theme}>
+    <div className="deck-area">
       <DeckThumbnail deckImg="7" />
       <DeckThumbnail deckImg="2" />
       <DeckThumbnail deckImg="3" />

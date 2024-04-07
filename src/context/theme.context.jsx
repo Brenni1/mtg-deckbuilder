@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 const ThemeContext = createContext();
 
-function ThemeProviderWrapper(props) {
+function ThemeProviderWrapper({ children }) {
   const [theme, setTheme] = useState("dark");
 
   const toggleTheme = () => {
@@ -13,7 +13,11 @@ function ThemeProviderWrapper(props) {
   };
 
   // eslint-disable-next-line react/prop-types
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{props.children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 
 export { ThemeContext, ThemeProviderWrapper };

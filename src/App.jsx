@@ -15,22 +15,22 @@ import { IsProtected } from "./components/is-protected/IsProtected.jsx";
 import { SignUp } from "./pages/signup/SignUp.jsx";
 
 function App() {
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div data-theme={theme}>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/deck" element={<Deck />} />
         <Route
-          path="/about-us"
+          path="/deck"
           element={
             <IsProtected>
-              <AboutUs />
+              <Deck />
             </IsProtected>
           }
         />
+        <Route path="/about-us" element={<AboutUs />} />
 
         <Route
           path="/user"

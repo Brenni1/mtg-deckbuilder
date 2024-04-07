@@ -1,13 +1,13 @@
 import "./HomeBanner.css";
-import { useState, useContext } from "react";
-import { ThemeContext } from "../../context/theme.context.jsx";
+import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import banner from "../../assets/imgs/mtg-banner.jpg";
 import axios from "axios";
 
 export const HomeBanner = () => {
   const nav = useNavigate();
-  const { theme } = useContext(ThemeContext);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -23,9 +23,12 @@ export const HomeBanner = () => {
   };
 
   return (
-    <div data-theme={theme}>
+    <>
       <div className="home-banner">
-        <div className="banner-background-img" style={{ backgroundImage: `url(${banner})` }}></div>
+        <div
+          className="banner-background-img"
+          style={{ backgroundImage: `url(${banner})` }}
+        ></div>
         <div className="banner-fade fade-top" />
         <div className="banner-form">
           <form onSubmit={handleSearch}>
@@ -40,7 +43,10 @@ export const HomeBanner = () => {
             </label>
           </form>
           <div className="banner-btn-container">
-            <button className="btn new-deck" onClick={() => nav("/create-deck")}>
+            <button
+              className="btn new-deck"
+              onClick={() => nav("/create-deck")}
+            >
               <i className="fa-solid fa-plus" />
               New Deck
             </button>
@@ -51,6 +57,6 @@ export const HomeBanner = () => {
         </div>
         <div className="banner-fade fade-bottom" />
       </div>
-    </div>
+    </>
   );
 };

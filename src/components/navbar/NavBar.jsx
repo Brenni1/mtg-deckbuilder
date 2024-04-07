@@ -27,11 +27,20 @@ export const NavBar = () => {
     <nav className="nav-bar" data-theme={theme}>
       <div className="nav-navigation">
         <Link to="/">
-          <img className="logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="" />
+          <img
+            className="logo-img"
+            src={theme === "dark" ? dragonWhiteImg : dragonImg}
+            alt=""
+          />
         </Link>
 
         <div className="burger-menu-items">
-          <img className="burger-btn" src={theme === "dark" ? menuWhiteImg : menuImg} alt="hamburger-menu" onClick={handleDropdownBtn} />
+          <img
+            className="burger-btn"
+            src={theme === "dark" ? menuWhiteImg : menuImg}
+            alt="hamburger-menu"
+            onClick={handleDropdownBtn}
+          />
           <div className={`dropdown-content ${!showDropdown ? "hide" : ""}`}>
             <Link to="/">
               <div>Home</div>
@@ -77,12 +86,21 @@ export const NavBar = () => {
 
         {isLoggedIn ? (
           <Link to="/user">
-            <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="" />
+            <img
+              className="user-img"
+              src={theme === "dark" ? userWhiteImg : userImg}
+              alt="user-img"
+            />
           </Link>
         ) : null}
 
         <div>
-          <img className="moon-img" src={theme === "dark" ? moonOutlineImg : moonImg} alt="" onClick={toggleTheme} />
+          <img
+            className="moon-img"
+            src={theme === "dark" ? moonOutlineImg : moonImg}
+            alt=""
+            onClick={toggleTheme}
+          />
         </div>
       </div>
     </nav>

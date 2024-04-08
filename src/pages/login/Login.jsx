@@ -23,11 +23,8 @@ export const Login = () => {
     event.preventDefault();
     const userToLogin = { email, password };
     try {
-      const response = await axios.post(
-        "http://localhost:5005/auth/login",
-        userToLogin
-      );
-      console.log("you logged in successfully", response.data);
+      const response = await axios.post("http://localhost:5005/auth/login", userToLogin);
+      console.log("you logged in successfully");
 
       localStorage.setItem("authToken", response.data.authToken);
 
@@ -41,12 +38,8 @@ export const Login = () => {
   };
 
   return (
-    <div data-theme={theme} className="sign-page">
-      <img
-        className="sign-logo-img"
-        src={theme === "dark" ? dragonWhiteImg : dragonImg}
-        alt=""
-      />
+    <div className="sign-page">
+      <img className="sign-logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="logo" />
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <label>

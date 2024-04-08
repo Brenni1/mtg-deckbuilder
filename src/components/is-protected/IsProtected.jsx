@@ -1,28 +1,30 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.jsx";
-import { useEffect } from "react";
 
-import { useLocation } from "react-router-dom";
-// eslint-disable-next-line react/prop-types
 export const IsProtected = ({ children }) => {
   const nav = useNavigate();
   const { isLoading, isLoggedIn } = useContext(AuthContext);
   const location = useLocation();
-
-  console.log("Logged in:", isLoggedIn);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
 
   useEffect(() => {
     if (isLoading) {
       console.log("loading");
-      return <p>Loading....</p>;
+      return; // No need to return anything here
     }
 
     if (!isLoggedIn) {
       console.log("Not logged in!");
       nav("/login", { state: location.pathname });
+    } else {
+      setIsAuthChecked(true);
     }
-  }, [isLoading]);
+  }, [isLoading, isLoggedIn, nav, location.pathname]);
+
+  if (!isAuthChecked) {
+    return <div>Loading...</div>;
+  }
 
   return children;
 };

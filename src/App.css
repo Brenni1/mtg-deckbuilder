@@ -5,9 +5,12 @@
   --alt-bg-color: #232323;
   --dark-bg-color: #0f0f0f;
   --light-bg-color: #252525;
+
   --main-font-color: white;
   --form-font-color: white;
   --light-font-color: white;
+  --dark-font-color: black;
+
   --accent-color: orange;
   --font-hover-color: var(--accent-color);
   --box-border-color: #5a5a5a;
@@ -22,13 +25,16 @@
   --alt-bg-color: #a5a5a5;
   --dark-bg-color: var(--alt-bg-color);
   --light-bg-color: #404040;
+
   --main-font-color: black;
   --form-font-color: black;
   --light-font-color: white;
+  --dark-font-color: black;
+
   --accent-color: rgb(193, 125, 0);
   --font-hover-color: var(--accent-color);
   --box-border-color: #181818;
-  /* --box-shadow-color: none; */
+  --box-shadow-color: #181818;
 
   --banner-fade-top: 30%;
   --banner-fade-bottom: 70%;

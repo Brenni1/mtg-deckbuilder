@@ -14,7 +14,7 @@ export const HomeBanner = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`/card/search?q=${searchTerm}`);
+      const res = await axios.get(`http://localhost:5005/user/card/search?q=${searchTerm}`);
       setSearchResults(res.data);
       console.log("Search results:", res.data);
     } catch (error) {
@@ -25,10 +25,7 @@ export const HomeBanner = () => {
   return (
     <>
       <div className="home-banner">
-        <div
-          className="banner-background-img"
-          style={{ backgroundImage: `url(${banner})` }}
-        ></div>
+        <div className="banner-background-img" style={{ backgroundImage: `url(${banner})` }}></div>
         <div className="banner-fade fade-top" />
         <div className="banner-form">
           <form onSubmit={handleSearch}>
@@ -43,14 +40,11 @@ export const HomeBanner = () => {
             </label>
           </form>
           <div className="banner-btn-container">
-            <button
-              className="btn new-deck"
-              onClick={() => nav("/create-deck")}
-            >
+            <button className="btn new-deck" onClick={() => nav("/create-deck")}>
               <i className="fa-solid fa-plus" />
               New Deck
             </button>
-            <button className="btn" onClick={() => nav("/deck")}>
+            <button className="btn" onClick={() => nav("/my-decks")}>
               <i className="fa-regular fa-folder" /> Deck Folder
             </button>
           </div>

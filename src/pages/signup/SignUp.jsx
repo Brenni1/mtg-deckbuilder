@@ -21,28 +21,17 @@ export const SignUp = () => {
 
     const userToCreate = { name, email, password };
     try {
-      const response = await axios.post(
-        "http://localhost:5005/auth/register",
-        userToCreate
-      );
+      const response = await axios.post("http://localhost:5005/auth/register", userToCreate);
       console.log("you created a user", response.data);
       nav("/login");
     } catch (err) {
-      console.log(
-        "there was an error signing up",
-        userToCreate,
-        err.response.data
-      );
+      console.log("there was an error signing up", userToCreate, err.response.data);
       setError(err.response.data.error);
     }
   };
   return (
-    <div className="sign-page" data-theme={theme}>
-      <img
-        className="sign-logo-img"
-        src={theme === "dark" ? dragonWhiteImg : dragonImg}
-        alt=""
-      />
+    <div className="sign-page">
+      <img className="sign-logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="" />
       <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
         <label>

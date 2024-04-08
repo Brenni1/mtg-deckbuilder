@@ -13,6 +13,7 @@ import { DeckCreator } from "./pages/deck-creator/DeckCreator.jsx";
 import { Login } from "./pages/login/Login.jsx";
 import { IsProtected } from "./components/is-protected/IsProtected.jsx";
 import { SignUp } from "./pages/signup/SignUp.jsx";
+import { MyDecks } from "./pages/my-decks/MyDecks.jsx";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -22,14 +23,14 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
+        {/* <Route
           path="/deck"
           element={
             <IsProtected>
               <Deck />
             </IsProtected>
           }
-        />
+        /> */}
         <Route path="/about-us" element={<AboutUs />} />
 
         <Route
@@ -40,6 +41,15 @@ function App() {
             </IsProtected>
           }
         />
+
+        <Route
+          path="/my-decks"
+          element={
+            <IsProtected>
+              <MyDecks />
+            </IsProtected>
+          }
+        ></Route>
 
         <Route
           path="/create-deck"

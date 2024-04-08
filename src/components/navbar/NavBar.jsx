@@ -27,28 +27,19 @@ export const NavBar = () => {
     <nav className="nav-bar" data-theme={theme}>
       <div className="nav-navigation">
         <Link to="/">
-          <img
-            className="logo-img"
-            src={theme === "dark" ? dragonWhiteImg : dragonImg}
-            alt=""
-          />
+          <img className="logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="" />
         </Link>
 
         <div className="burger-menu-items">
-          <img
-            className="burger-btn"
-            src={theme === "dark" ? menuWhiteImg : menuImg}
-            alt="hamburger-menu"
-            onClick={handleDropdownBtn}
-          />
-          <div className={`dropdown-content ${!showDropdown ? "hide" : ""}`}>
+          <img className="burger-btn" src={theme === "dark" ? menuWhiteImg : menuImg} alt="hamburger-menu" onClick={handleDropdownBtn} />
+          <div className={`menu-dropdown-content ${!showDropdown ? "hide" : ""}`}>
             <Link to="/">
               <div>Home</div>
             </Link>
-            <Link to="/deck">
+            <Link to="/my-decks">
               <div>My Decks</div>
             </Link>
-            <Link to="/deck/xyz">
+            <Link to="/create-deck">
               <div>Deck Creator</div>
             </Link>
             <Link to="/about-us">
@@ -86,21 +77,12 @@ export const NavBar = () => {
 
         {isLoggedIn ? (
           <Link to="/user">
-            <img
-              className="user-img"
-              src={theme === "dark" ? userWhiteImg : userImg}
-              alt="user-img"
-            />
+            <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="user-img" />
           </Link>
         ) : null}
 
         <div>
-          <img
-            className="moon-img"
-            src={theme === "dark" ? moonOutlineImg : moonImg}
-            alt=""
-            onClick={toggleTheme}
-          />
+          <img className="moon-img" src={theme === "dark" ? moonOutlineImg : moonImg} alt="" onClick={toggleTheme} />
         </div>
       </div>
     </nav>

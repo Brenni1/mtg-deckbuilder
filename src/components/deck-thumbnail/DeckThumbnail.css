@@ -22,7 +22,7 @@
 }
 
 .deck-thumbnail:hover {
-  background-size: 110%;
+  background-size: 105%;
   border-color: var(--accent-color);
   box-shadow: 2rem 0 5rem 3.7rem var(--box-shadow-color) inset;
 }

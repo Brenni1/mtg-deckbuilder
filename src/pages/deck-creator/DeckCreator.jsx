@@ -8,13 +8,9 @@ import userWhiteImg from "../../assets/imgs/user_white.png";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-import deckImg1 from "../../assets/imgs/card-imgs/1.jpg";
-import deckImg2 from "../../assets/imgs/card-imgs/2.jpg";
-import deckImg3 from "../../assets/imgs/card-imgs/3.jpg";
 import deckImg4 from "../../assets/imgs/card-imgs/4.jpg";
-import deckImg5 from "../../assets/imgs/card-imgs/5.jpg";
-import deckImg6 from "../../assets/imgs/card-imgs/6.jpg";
-import deckImg7 from "../../assets/imgs/card-imgs/7.jpg";
+
+import cardsJson from "../../assets/120cards.json";
 
 export const DeckCreator = () => {
   const { theme } = useContext(ThemeContext);
@@ -81,6 +77,22 @@ export const DeckCreator = () => {
     });
   };
 
+  //-------------Search Bar Logic----------------//
+
+  const [value, setValue] = useState("");
+
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const onSearch = (searchTerm) => {
+    //fetching from api
+
+    console.log("searchTerm:", searchTerm);
+  };
+
+  //END ----------Search Bar Logic------------END//
+
   if (!deckInfo) {
     return <div>Loading...</div>;
   }
@@ -89,7 +101,7 @@ export const DeckCreator = () => {
     <div className="deck-creator">
       <div className="deck-info" style={{ "--background-img": `url(${deckImg4})` }}>
         <div className="deck-title">
-          <h1>Title of Deck</h1>
+          <h1>{deckInfo.decktitle}</h1>
         </div>
         <div className="deck-user-container">
           <Link to="/user">
@@ -108,19 +120,30 @@ export const DeckCreator = () => {
         </div>
         <div className="deck-stats">Deck Stats</div>
       </div>
+
       <div className="deck-control">
         <div className="deck-control-inputs">
-          <form>
-            <label>
-              <input className="search-bar" type="text" placeholder="Search for Cards..." />
-            </label>
-          </form>
+          <div className="search-inner">
+            <input className="search-bar" type="text" value={value} onChange={onChange} placeholder="Search for Cards..." />
+            <button className="btn" onClick={() => onSearch(value)}>
+              Search
+            </button>
+          </div>
+          <div className="search-dropdown">
+            {cardsJson
+              .filter((card) => {
+                console.log(card.name);
+                const searchTerm = value.toLowerCase();
+                const cardName = card.name.toLowerCase();
 
-          <form>
-            <label>
-              <input className="search-bar" type="text" placeholder="Filter Cards..." />
-            </label>
-          </form>
+                return searchTerm && cardName.startsWith(searchTerm);
+              })
+              .map((card) => (
+                <div className="dropdown-row" onClick="{}" key={card._id}>
+                  {card.name}
+                </div>
+              ))}
+          </div>
         </div>
         <div className="deck-control-actions">
           <Link to="/deck/xyz">

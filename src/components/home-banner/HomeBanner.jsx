@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../../assets/imgs/mtg-banner.jpg";
 import axios from "axios";
+import Autosuggest from "react-autosuggest";
+import SearchBox from "../search-box/SearchBox.jsx";
 
 export const HomeBanner = () => {
   const nav = useNavigate();
@@ -44,6 +46,7 @@ export const HomeBanner = () => {
               <i className="fa-solid fa-plus" />
               New Deck
             </button>
+            <SearchBox />
             <button className="btn" onClick={() => nav("/my-decks")}>
               <i className="fa-regular fa-folder" /> Deck Folder
             </button>

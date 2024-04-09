@@ -35,6 +35,22 @@
   display: none;
 }
 
+.user-dropdown-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+  z-index: 2;
+  background-color: var(--alt-bg-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  right: 5rem;
+}
+
+.user-dropdown-content.hide {
+  display: none;
+}
+
 .nav-user {
   display: flex;
   align-items: center;
@@ -42,6 +58,11 @@
 }
 
 .nav-user > a > div {
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.logout-btn {
   display: flex;
   column-gap: 0.5rem;
 }
@@ -65,7 +86,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 650px) {
   .burger-menu-items {
     display: flex;
     align-items: center;

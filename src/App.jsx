@@ -49,7 +49,7 @@ function App() {
               <MyDecks />
             </IsProtected>
           }
-        ></Route>
+        />
 
         <Route
           path="/create-deck"

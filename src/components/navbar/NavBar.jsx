@@ -15,24 +15,39 @@ import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
 import dragonImg from "../../assets/imgs/logo-dragon.png";
 
 export const NavBar = () => {
-  const [showDropdown, setShowDropDown] = useState(false);
+  const [showMenuDropdown, setShowMenuDropDown] = useState(false);
+  const [showUserDropdown, setShowUserDropDown] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { isLoggedIn, handleLogout } = useContext(AuthContext);
 
-  const handleDropdownBtn = () => {
-    setShowDropDown(!showDropdown);
+  const handleMenuDropdownBtn = () => {
+    setShowMenuDropDown(!showMenuDropdown);
+  };
+  const handleUserDropdownBtn = () => {
+    setShowUserDropDown(!showUserDropdown);
+  };
+
+  const handleClickLogout = () => {
+    setShowUserDropDown(!showUserDropdown);
+    handleLogout();
+  };
+
+  const handleClickOutside = (e) => {
+    if (e.currentTarget != e.target) return;
+    setShowMenuDropDown(false);
+    setShowUserDropDown(false);
   };
 
   return (
-    <nav className="nav-bar" data-theme={theme}>
+    <nav className="nav-bar" data-theme={theme} onClick={handleClickOutside}>
       <div className="nav-navigation">
         <Link to="/">
           <img className="logo-img" src={theme === "dark" ? dragonWhiteImg : dragonImg} alt="" />
         </Link>
 
         <div className="burger-menu-items">
-          <img className="burger-btn" src={theme === "dark" ? menuWhiteImg : menuImg} alt="hamburger-menu" onClick={handleDropdownBtn} />
-          <div className={`menu-dropdown-content ${!showDropdown ? "hide" : ""}`}>
+          <img className="burger-btn" src={theme === "dark" ? menuWhiteImg : menuImg} alt="hamburger-menu" onClick={handleMenuDropdownBtn} />
+          <div className={`menu-dropdown-content ${!showMenuDropdown ? "hide" : ""}`}>
             <Link to="/">
               <div>Home</div>
             </Link>
@@ -66,20 +81,32 @@ export const NavBar = () => {
             </div>
           </Link>
         ) : null}
-        {isLoggedIn ? (
+
+        {/* {isLoggedIn ? (
           <Link to="/">
-            <div onClick={handleLogout}>
+            <div onClick={handleLogout} className="logout-btn">
               <i className="fa-solid fa-arrow-right-from-bracket" />
               <div>Logout</div>
             </div>
           </Link>
-        ) : null}
+        ) : null} */}
 
-        {isLoggedIn ? (
-          <Link to="/user">
-            <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="user-img" />
-          </Link>
-        ) : null}
+        <div>
+          {isLoggedIn ? (
+            <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="user-img" onClick={handleUserDropdownBtn} />
+          ) : null}
+
+          <div className={`user-dropdown-content ${!showUserDropdown ? "hide" : ""}`}>
+            {isLoggedIn ? (
+              <Link to="/">
+                <div onClick={handleClickLogout} className="logout-btn">
+                  <i className="fa-solid fa-arrow-right-from-bracket" />
+                  <div>Logout</div>
+                </div>
+              </Link>
+            ) : null}
+          </div>
+        </div>
 
         <div>
           <img className="moon-img" src={theme === "dark" ? moonOutlineImg : moonImg} alt="" onClick={toggleTheme} />

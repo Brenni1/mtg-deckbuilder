@@ -75,6 +75,7 @@ textarea,
 button {
   color: var(--form-font-color);
   caret-color: var(--accent-color);
+  background-color: var(--alt-bg-color);
 }
 
 a:hover div {

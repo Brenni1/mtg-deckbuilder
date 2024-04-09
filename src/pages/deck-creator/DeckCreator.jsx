@@ -213,8 +213,9 @@ export const DeckCreator = () => {
         {cardsInDeck
           ? cardsInDeck.map((card) => (
               <div className="deck-card" key={card.id}>
-                - {card.name} - cmc:
-                {card.cmc}
+                <div>- {card.name}</div>
+                <div>cmc: {card.cmc}</div>
+                <div>colors: {card.colors}</div>
               </div>
             ))
           : null}

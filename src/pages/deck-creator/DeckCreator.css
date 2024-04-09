@@ -96,3 +96,12 @@
   border-top: 1px solid var(--box-border-color);
   border-bottom: 1px solid var(--box-border-color);
 }
+
+.deck-card {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  border-bottom: 1px solid var(--box-border-color);
+  /* border-top: 1px solid var(--box-border-color); */
+  padding: 0.5rem;
+}

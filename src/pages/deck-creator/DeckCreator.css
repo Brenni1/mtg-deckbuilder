@@ -54,31 +54,33 @@
   flex-direction: column;
 }
 
-.search-inner {
-  width: 100%;
-  display: flex;
-}
-
 .deck-control input {
   width: 100%;
   border: 1px solid var(--box-border-color);
 }
 
 .search-dropdown {
-  border: 1px solid white;
-  background-color: black;
+  border: 1px solid var(--box-border-color);
+  border-radius: 0.2rem;
+  background-color: var(--main-bg-color);
   position: absolute;
-  top: 100%;
+  top: 105%;
+  width: 100%;
+}
+
+.search-dropdown.borderless {
+  border: none;
 }
 
 .dropdown-row {
   cursor: pointer;
   text-align: start;
-  margin: 2px 0;
+  padding: 0.4rem 1rem;
 }
 
 .dropdown-row:hover {
-  background-color: red;
+  background-color: var(--accent-color);
+  color: var(--dark-font-color);
 }
 
 .deck-control-actions div {

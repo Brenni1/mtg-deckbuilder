@@ -7,10 +7,9 @@ import userImg from "../../assets/imgs/user.png";
 import userWhiteImg from "../../assets/imgs/user_white.png";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import axios from "axios";
 
 import deckImg4 from "../../assets/imgs/card-imgs/4.jpg";
-
-import cardsJson from "../../assets/120cards.json";
 
 export const DeckCreator = () => {
   const { theme } = useContext(ThemeContext);
@@ -22,19 +21,20 @@ export const DeckCreator = () => {
     deckdescription: "",
     deckstats: "",
   });
+  const [cardsInDeck, setCardsInDeck] = useState(null);
 
+  const getdeckInfo = async () => {
+    try {
+      const res = await fetch(`http://localhost:5005/user/deck/${id}`);
+      const parsedRes = await res.json();
+      setDeckInfo(parsedRes);
+      setCardsInDeck(parsedRes.cards);
+      console.log("This is your Deck:", parsedRes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const getdeckInfo = async () => {
-      try {
-        const res = await fetch(`http://localhost:5005/user/deck/${id}`);
-        const parsedRes = await res.json();
-        setDeckInfo(parsedRes);
-        console.log("this is the Deck", parsedRes);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
     getdeckInfo();
   }, [id]);
 
@@ -79,16 +79,36 @@ export const DeckCreator = () => {
 
   //-------------Search Bar Logic----------------//
 
-  const [value, setValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [allSearchedCards, setAllSearchedCards] = useState(null);
 
-  const onChange = (e) => {
-    setValue(e.target.value);
+  const findCard = async (search) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5005/user/card/search?q=${search}`
+      );
+      setAllSearchedCards(res.data);
+      console.log("Search results:", res.data);
+    } catch (error) {
+      console.log("Error searching:", error);
+    }
   };
 
-  const onSearch = (searchTerm) => {
-    //fetching from api
+  const onSearchChange = (e) => {
+    setSearchValue(e.target.value);
+    if (searchValue.length > 1) {
+      findCard(searchValue);
+    }
+  };
 
-    console.log("searchTerm:", searchTerm);
+  const addCard = (newCard) => {
+    setSearchValue("");
+    // setCardsInDeck([...cardsInDeck, newCardId]);
+    setCardsInDeck([...cardsInDeck, newCard]);
+
+    console.log("newCard", newCard);
+    console.log("newCardName:", newCard.name);
+    console.log("cards in deck:", cardsInDeck);
   };
 
   //END ----------Search Bar Logic------------END//
@@ -99,21 +119,32 @@ export const DeckCreator = () => {
 
   return (
     <div className="deck-creator">
-      <div className="deck-info" style={{ "--background-img": `url(${deckImg4})` }}>
+      <div
+        className="deck-info"
+        style={{ "--background-img": `url(${deckImg4})` }}
+      >
         <div className="deck-title">
           <h1>{deckInfo.decktitle}</h1>
         </div>
         <div className="deck-user-container">
           <Link to="/user">
             <div className="deck-user-img">
-              <img className="user-img" src={theme === "dark" ? userWhiteImg : userImg} alt="" />
+              <img
+                className="user-img"
+                src={theme === "dark" ? userWhiteImg : userImg}
+                alt=""
+              />
             </div>
           </Link>
           <div>{user ? user.name : "no user found"}</div>
         </div>
         <div className="deck-tags">Deck Tags</div>
         <div className="deck-desc">
-          <textarea name="deckdescription" value={deckInfo.deckdescription} onChange={handleChange} />
+          <textarea
+            name="deckdescription"
+            value={deckInfo.deckdescription}
+            onChange={handleChange}
+          />
           <button className="btn" onClick={handleUpdate}>
             Update Deck
           </button>
@@ -123,26 +154,44 @@ export const DeckCreator = () => {
 
       <div className="deck-control">
         <div className="deck-control-inputs">
-          <div className="search-inner">
-            <input className="search-bar" type="text" value={value} onChange={onChange} placeholder="Search for Cards..." />
-            <button className="btn" onClick={() => onSearch(value)}>
-              Search
-            </button>
+          <div>
+            <input
+              className="search-bar"
+              type="text"
+              value={searchValue}
+              onChange={onSearchChange}
+              placeholder="Search for Cards..."
+            />
           </div>
-          <div className="search-dropdown">
-            {cardsJson
-              .filter((card) => {
-                console.log(card.name);
-                const searchTerm = value.toLowerCase();
-                const cardName = card.name.toLowerCase();
+          <div
+            className={`search-dropdown ${!searchValue ? "borderless" : ""}`}
+          >
+            {!allSearchedCards ? (
+              searchValue ? (
+                <div className="dropdown-row">...loading</div>
+              ) : null
+            ) : (
+              allSearchedCards
+                .filter((card) => {
+                  const searchTerm = searchValue.toLowerCase();
+                  const cardName = card.name.toLowerCase();
 
-                return searchTerm && cardName.startsWith(searchTerm);
-              })
-              .map((card) => (
-                <div className="dropdown-row" onClick="{}" key={card._id}>
-                  {card.name}
-                </div>
-              ))}
+                  return (
+                    searchTerm && cardName.startsWith(searchTerm)
+                    // && cardName !== searchTerm
+                  );
+                })
+                .slice(0, 10)
+                .map((card) => (
+                  <div
+                    className="dropdown-row"
+                    onClick={() => addCard(card)}
+                    key={card._id}
+                  >
+                    {card.name}
+                  </div>
+                ))
+            )}
           </div>
         </div>
         <div className="deck-control-actions">
@@ -161,15 +210,14 @@ export const DeckCreator = () => {
         </div>
       </div>
       <div className="deck-cards">
-        <div>1 CardName X</div>
-        <div>1 CardName Y</div>
-        <div>1 CardName Z</div>
-        <div>1 CardName X</div>
-        <div>1 CardName Y</div>
-        <div>1 CardName Z</div>
-        <div>1 CardName X</div>
-        <div>1 CardName Y</div>
-        <div>1 CardName Z</div>
+        {cardsInDeck
+          ? cardsInDeck.map((card) => (
+              <div className="deck-card" key={card.id}>
+                - {card.name} - cmc:
+                {card.cmc}
+              </div>
+            ))
+          : null}
       </div>
     </div>
   );

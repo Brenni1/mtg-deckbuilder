@@ -66,6 +66,7 @@
   position: absolute;
   top: 105%;
   width: 100%;
+  z-index: 99;
 }
 
 .search-dropdown.borderless {
@@ -106,8 +107,12 @@
 }
 
 .deck-card.card-img {
-  /* width: 100%; */
+  top: 22%;
   position: relative;
-  /* top: 10%; */
-  /* background-color: red; */
+  margin-top: -11rem;
+}
+
+.deck-card.card-img:hover {
+  z-index: 1;
+  cursor: pointer;
 }

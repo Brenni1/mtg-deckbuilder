@@ -49,12 +49,12 @@
 }
 
 .deck-control-inputs {
-  width: 30%;
+  width: 25%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-.deck-control input {
+.search-bar {
   width: 100%;
   border: 1px solid var(--box-border-color);
 }
@@ -97,11 +97,17 @@
   border-bottom: 1px solid var(--box-border-color);
 }
 
-.deck-card {
+.deck-card.text {
   display: flex;
   justify-content: space-between;
   width: 40%;
   border-bottom: 1px solid var(--box-border-color);
-  /* border-top: 1px solid var(--box-border-color); */
   padding: 0.5rem;
+}
+
+.deck-card.card-img {
+  /* width: 100%; */
+  position: relative;
+  /* top: 10%; */
+  /* background-color: red; */
 }

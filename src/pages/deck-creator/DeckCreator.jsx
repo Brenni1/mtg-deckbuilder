@@ -112,6 +112,12 @@ export const DeckCreator = () => {
   };
 
   //END ----------Search Bar Logic------------END//
+  const [cardView, setCardView] = useState("text");
+
+  const handleView = (e) => {
+    setCardView(e.target.value);
+    console.log(cardView);
+  };
 
   if (!deckInfo) {
     return <div>Loading...</div>;
@@ -154,15 +160,14 @@ export const DeckCreator = () => {
 
       <div className="deck-control">
         <div className="deck-control-inputs">
-          <div>
-            <input
-              className="search-bar"
-              type="text"
-              value={searchValue}
-              onChange={onSearchChange}
-              placeholder="Search for Cards..."
-            />
-          </div>
+          <input
+            className="search-bar"
+            type="text"
+            value={searchValue}
+            onChange={onSearchChange}
+            placeholder="Search for Cards..."
+          />
+
           <div
             className={`search-dropdown ${!searchValue ? "borderless" : ""}`}
           >
@@ -193,15 +198,29 @@ export const DeckCreator = () => {
                 ))
             )}
           </div>
+          <div>
+            <label for="cards-view">
+              <i className="fa-solid fa-eye" /> View
+            </label>
+            <select
+              name="cards-view"
+              id="cards-view"
+              onChange={handleView}
+              value={cardView}
+            >
+              <option value="text">Text</option>
+              <option value="images">Images</option>
+            </select>
+          </div>
         </div>
         <div className="deck-control-actions">
-          <Link to="/deck/xyz">
+          <Link to="">
             <div>
               <i className="fa-solid fa-download" />
               <div>Download</div>
             </div>
           </Link>
-          <Link to="/deck/xyz">
+          <Link to="">
             <div>
               <i className="fa-solid fa-cart-shopping" />
               <div>Buy Deck</div>
@@ -211,13 +230,19 @@ export const DeckCreator = () => {
       </div>
       <div className="deck-cards">
         {cardsInDeck
-          ? cardsInDeck.map((card) => (
-              <div className="deck-card" key={card.id}>
-                <div>- {card.name}</div>
-                <div>cmc: {card.cmc}</div>
-                <div>colors: {card.colors}</div>
-              </div>
-            ))
+          ? cardsInDeck.map((card) =>
+              cardView === "text" ? (
+                <div className="deck-card text" key={card.id}>
+                  <div>- {card.name}</div>
+                  <div>cmc: {card.cmc}</div>
+                  <div>colors: {card.colors}</div>
+                </div>
+              ) : (
+                <div className="deck-card card-img" key={card.id}>
+                  <img src={card.image_uris.small} alt="card" />
+                </div>
+              )
+            )
           : null}
       </div>
     </div>

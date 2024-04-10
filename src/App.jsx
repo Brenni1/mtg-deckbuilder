@@ -32,14 +32,6 @@ function App() {
         /> */}
         <Route path="/about-us" element={<AboutUs />} />
         <Route
-          path="/user"
-          element={
-            <IsProtected>
-              <UserProfile />
-            </IsProtected>
-          }
-        />
-        <Route
           path="/my-decks"
           element={
             <IsProtected>

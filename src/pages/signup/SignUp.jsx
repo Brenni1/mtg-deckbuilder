@@ -21,7 +21,7 @@ export const SignUp = () => {
 
     const userToCreate = { name, email, password };
     try {
-      const response = await axios.post("${API_URL}/auth/register", userToCreate);
+      const response = await axios.post(`${API_URL}/auth/register`, userToCreate);
       console.log("you created a user", response.data);
       nav("/login");
     } catch (err) {

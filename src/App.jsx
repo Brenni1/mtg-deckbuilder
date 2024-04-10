@@ -22,14 +22,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route
-          path="/deck"
-          element={
-            <IsProtected>
-              <Deck />
-            </IsProtected>
-          }
-        /> */}
+
         <Route path="/about-us" element={<AboutUs />} />
         <Route
           path="/my-decks"

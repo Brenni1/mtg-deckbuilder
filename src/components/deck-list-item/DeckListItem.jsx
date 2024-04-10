@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState } from "react";
 const theToken = localStorage.getItem("authToken");
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export const DeckListItem = ({ title, format, colors, date }) => {
   const { user } = useContext(AuthContext);
@@ -11,7 +12,7 @@ export const DeckListItem = ({ title, format, colors, date }) => {
   console.log("Userlog from the DeckListItemComponent", user);
   const handleDelete = async (deckToDelete) => {
     try {
-      await fetch(`http://localhost:5005/user/deck/${deckId}`, {
+      await fetch(`${API_URL}/user/deck/${deckId}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${theToken}`,
@@ -19,7 +20,7 @@ export const DeckListItem = ({ title, format, colors, date }) => {
       });
 
       // Update the UserModel with the deckId
-      const updatedUser = await axios.put(`http://localhost:5005/user/${user._id}`, { $pull: { decks: deckId } });
+      const updatedUser = await axios.put(`${API_URL}/user/${user._id}`, { $pull: { decks: deckId } });
       console.log("This is the updated User", updatedUser.data.updatedUser);
 
       setDecks(decks.filter((deck) => deck._id !== deckToDelete));

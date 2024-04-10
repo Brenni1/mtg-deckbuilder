@@ -19,11 +19,13 @@ export const Login = () => {
   const location = useLocation();
   const previousUrl = location.state;
 
+  const API_URL = import.meta.env.VITE_API_URL || "${API_URL}";
+
   const handleLogin = async (event) => {
     event.preventDefault();
     const userToLogin = { email, password };
     try {
-      const response = await axios.post("http://localhost:5005/auth/login", userToLogin);
+      const response = await axios.post(`${API_URL}/auth/login`, userToLogin);
       console.log("you logged in successfully");
 
       localStorage.setItem("authToken", response.data.authToken);

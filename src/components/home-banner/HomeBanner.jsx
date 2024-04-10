@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../../assets/imgs/mtg-banner.jpg";
 import axios from "axios";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 export const HomeBanner = () => {
   const nav = useNavigate();
 
@@ -14,7 +14,7 @@ export const HomeBanner = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5005/user/card/search?q=${searchTerm}`);
+      const res = await axios.get(`${API_URL}/user/card/search?q=${searchTerm}`);
       setSearchResults(res.data);
       console.log("Search results:", res.data);
     } catch (error) {

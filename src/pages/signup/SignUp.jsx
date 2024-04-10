@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../context/theme.context.jsx";
 import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
 import dragonImg from "../../assets/imgs/logo-dragon.png";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 export const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ export const SignUp = () => {
 
     const userToCreate = { name, email, password };
     try {
-      const response = await axios.post("http://localhost:5005/auth/register", userToCreate);
+      const response = await axios.post("${API_URL}/auth/register", userToCreate);
       console.log("you created a user", response.data);
       nav("/login");
     } catch (err) {

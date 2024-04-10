@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 import deckImg4 from "../../assets/imgs/card-imgs/4.jpg";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 export const DeckCreator = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(AuthContext);
@@ -26,7 +26,7 @@ export const DeckCreator = () => {
   // getting the Info about the Cards in the Deck from the DB
   const getdeckInfo = async () => {
     try {
-      const res = await fetch(`http://localhost:5005/user/deck/${id}`);
+      const res = await fetch(`${API_URL}/user/deck/${id}`);
       const parsedRes = await res.json();
       setDeckInfo(parsedRes);
       setCardsInDeck(parsedRes.cards);
@@ -44,7 +44,7 @@ export const DeckCreator = () => {
         ...deckInfo,
         cards: cardIds,
       };
-      const res = await fetch(`http://localhost:5005/user/deck/${id}`, {
+      const res = await fetch(`${API_URL}/user/deck/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
@@ -107,7 +107,7 @@ export const DeckCreator = () => {
 
   const findCard = async (search) => {
     try {
-      const res = await axios.get(`http://localhost:5005/user/card/search?q=${search}`);
+      const res = await axios.get(`${API_URL}/user/card/search?q=${search}`);
       setAllSearchedCards(res.data);
       console.log("Search results:", res.data);
     } catch (error) {

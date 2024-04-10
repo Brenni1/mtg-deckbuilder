@@ -7,7 +7,7 @@ import { ThemeContext } from "../../context/theme.context.jsx";
 
 import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
 import dragonImg from "../../assets/imgs/logo-dragon.png";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 export const CreateDeck = () => {
   const [decktitle, setDeckTitle] = useState("");
   const [decktags, setDeckTags] = useState("StandardTag");
@@ -33,12 +33,12 @@ export const CreateDeck = () => {
 
     try {
       // Create the deck
-      const deckResponse = await axios.post("http://localhost:5005/user/deck", deckToCreate);
+      const deckResponse = await axios.post("${API_URL}/user/deck", deckToCreate);
       const deckId = deckResponse.data._id;
       console.log("This is the deckId", deckId);
 
       // Update the UserModel with the deckId
-      const updatedUser = await axios.put(`http://localhost:5005/user/${user._id}`, { $push: { decks: deckId } });
+      const updatedUser = await axios.put(`${API_URL}/user/${user._id}`, { $push: { decks: deckId } });
       console.log("This is the updated User", updatedUser.data.updatedUser);
       setUser(updatedUser.data.updatedUser);
       console.log("you created a Deck", deckId);

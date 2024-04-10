@@ -8,14 +8,14 @@ import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 // import axios from "axios";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 export const CardDetail = () => {
   const [card, setCard] = useState("");
   const { id } = useParams();
 
   const getcard = async () => {
     try {
-      const res = await fetch(`http://localhost:5005/user/card/${id}`);
+      const res = await fetch(`${API_URL}/user/card/${id}`);
       const parsedRes = await res.json();
       setCard(parsedRes);
     } catch (err) {

@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
+
 export const HomeDeckContainer = () => {
   const { user, setUser } = useContext(AuthContext);
   const [populatedUser, setPopulatedUser] = useState();
@@ -14,7 +16,7 @@ export const HomeDeckContainer = () => {
   const populateUser = async () => {
     try {
       const userId = user._id;
-      const res = await fetch(`http://localhost:5005/user/populate/${userId}`, {
+      const res = await fetch(`${API_URL}/user/populate/${userId}`, {
         headers: {
           authorization: `Bearer ${theToken}`,
         },

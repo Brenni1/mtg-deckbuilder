@@ -14,6 +14,7 @@ import { Login } from "./pages/login/Login.jsx";
 import { IsProtected } from "./components/is-protected/IsProtected.jsx";
 import { SignUp } from "./pages/signup/SignUp.jsx";
 import { MyDecks } from "./pages/my-decks/MyDecks.jsx";
+import { CardDetail } from "./pages/card-detail/CardDetail.jsx";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -32,7 +33,6 @@ function App() {
           }
         /> */}
         <Route path="/about-us" element={<AboutUs />} />
-
         <Route
           path="/user"
           element={
@@ -41,7 +41,6 @@ function App() {
             </IsProtected>
           }
         />
-
         <Route
           path="/my-decks"
           element={
@@ -50,7 +49,6 @@ function App() {
             </IsProtected>
           }
         />
-
         <Route
           path="/create-deck"
           element={
@@ -67,6 +65,7 @@ function App() {
             </IsProtected>
           }
         />
+        <Route path="/card/:id" element={<CardDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

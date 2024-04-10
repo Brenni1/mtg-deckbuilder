@@ -4,8 +4,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import banner from "../../assets/imgs/mtg-banner.jpg";
 import axios from "axios";
-import Autosuggest from "react-autosuggest";
-import SearchBox from "../search-box/SearchBox.jsx";
 
 export const HomeBanner = () => {
   const nav = useNavigate();
@@ -16,9 +14,7 @@ export const HomeBanner = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(
-        `http://localhost:5005/user/card/search?q=${searchTerm}`
-      );
+      const res = await axios.get(`http://localhost:5005/user/card/search?q=${searchTerm}`);
       setSearchResults(res.data);
       console.log("Search results:", res.data);
     } catch (error) {
@@ -29,10 +25,7 @@ export const HomeBanner = () => {
   return (
     <>
       <div className="home-banner">
-        <div
-          className="banner-background-img"
-          style={{ backgroundImage: `url(${banner})` }}
-        ></div>
+        <div className="banner-background-img" style={{ backgroundImage: `url(${banner})` }}></div>
         <div className="banner-fade fade-top" />
         <div className="banner-form">
           <form onSubmit={handleSearch}>
@@ -47,14 +40,11 @@ export const HomeBanner = () => {
             </label>
           </form>
           <div className="banner-btn-container">
-            <button
-              className="btn new-deck"
-              onClick={() => nav("/create-deck")}
-            >
+            <button className="btn new-deck" onClick={() => nav("/create-deck")}>
               <i className="fa-solid fa-plus" />
               New Deck
             </button>
-            <SearchBox />
+
             <button className="btn" onClick={() => nav("/my-decks")}>
               <i className="fa-regular fa-folder" /> Deck Folder
             </button>

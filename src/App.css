@@ -18,6 +18,8 @@
 
   --banner-fade-top: 70%;
   --banner-fade-bottom: 10%;
+
+  --deck-card-width: 12rem;
 }
 
 [data-theme="light"] {

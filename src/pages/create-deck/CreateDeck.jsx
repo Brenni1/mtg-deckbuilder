@@ -33,7 +33,7 @@ export const CreateDeck = () => {
 
     try {
       // Create the deck
-      const deckResponse = await axios.post("${API_URL}/user/deck", deckToCreate);
+      const deckResponse = await axios.post(`${API_URL}/user/deck`, deckToCreate);
       const deckId = deckResponse.data._id;
       console.log("This is the deckId", deckId);
 

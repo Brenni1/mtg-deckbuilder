@@ -11,6 +11,7 @@ const AuthWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const nav = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
   //this function checks if there is a token and if so, if it is valid
   const authenticateUser = async () => {
     //check the localStorage for the token
@@ -18,7 +19,7 @@ const AuthWrapper = ({ children }) => {
     if (theToken) {
       try {
         //this is if there is a token then we need to verify it
-        const response = await axios.get("http://localhost:5005/auth/verify", {
+        const response = await axios.get(`${API_URL}/auth/verify`, {
           headers: {
             authorization: `Bearer ${theToken}`,
           },

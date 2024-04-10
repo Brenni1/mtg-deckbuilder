@@ -62,22 +62,6 @@ export const DeckCreator = () => {
     getdeckInfo();
   }, [id]);
 
-  // useEffect(() => {
-  //   if (deckInfo) {
-  //     loadData();
-  //   }
-  // }, []);
-
-  // const loadData = () => {
-  //   setDeckInfo((prevDeckInfo) => ({
-  //     ...prevDeckInfo,
-  //     decktitle: deckInfo.decktitle,
-  //     decktags: deckInfo.decktags,
-  //     deckdescription: deckInfo.deckdescription,
-  //     deckstats: deckInfo.deckstats,
-  //   }));
-  // };
-
   // autosave Feature //
   useEffect(() => {
     if (cardsInDeck) {
@@ -248,10 +232,82 @@ export const DeckCreator = () => {
             : null}
         </div>
         <div className="deck-creature-cards">
-          <div className="deck-card-category">Creatures</div>
+          <div className="deck-card-category">Creature</div>
           {cardsInDeck
             ? cardsInDeck.map((card, index) =>
                 card.type_line.toLowerCase().includes("creature") ? (
+                  cardView === "text" ? (
+                    <div className="deck-card text" key={card.id}>
+                      <Link to={`/card/${card._id}`}>- {card.name}</Link>
+                      <div>mana cost: {card.mana_cost}</div>
+
+                      <button className="btn" onClick={() => handleDeleteCard(index)}>
+                        Delete
+                      </button>
+                    </div>
+                  ) : (
+                    <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                      <img src={card.image_uris.normal} alt="card" />
+                      <div className="card-hover-box" />
+                    </Link>
+                  )
+                ) : null
+              )
+            : null}
+        </div>
+        <div className="deck-sorcery-cards">
+          <div className="deck-card-category">Sorcery</div>
+          {cardsInDeck
+            ? cardsInDeck.map((card, index) =>
+                card.type_line.toLowerCase().includes("sorcery") ? (
+                  cardView === "text" ? (
+                    <div className="deck-card text" key={card.id}>
+                      <Link to={`/card/${card._id}`}>- {card.name}</Link>
+                      <div>mana cost: {card.mana_cost}</div>
+
+                      <button className="btn" onClick={() => handleDeleteCard(index)}>
+                        Delete
+                      </button>
+                    </div>
+                  ) : (
+                    <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                      <img src={card.image_uris.normal} alt="card" />
+                      <div className="card-hover-box" />
+                    </Link>
+                  )
+                ) : null
+              )
+            : null}
+        </div>
+        <div className="deck-artifact-cards">
+          <div className="deck-card-category">Artifact</div>
+          {cardsInDeck
+            ? cardsInDeck.map((card, index) =>
+                card.type_line.toLowerCase().includes("artifact") ? (
+                  cardView === "text" ? (
+                    <div className="deck-card text" key={card.id}>
+                      <Link to={`/card/${card._id}`}>- {card.name}</Link>
+                      <div>mana cost: {card.mana_cost}</div>
+
+                      <button className="btn" onClick={() => handleDeleteCard(index)}>
+                        Delete
+                      </button>
+                    </div>
+                  ) : (
+                    <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                      <img src={card.image_uris.normal} alt="card" />
+                      <div className="card-hover-box" />
+                    </Link>
+                  )
+                ) : null
+              )
+            : null}
+        </div>
+        <div className="deck-land-cards">
+          <div className="deck-card-category">Land</div>
+          {cardsInDeck
+            ? cardsInDeck.map((card, index) =>
+                card.type_line.toLowerCase().includes("land") ? (
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
                       <Link to={`/card/${card._id}`}>- {card.name}</Link>

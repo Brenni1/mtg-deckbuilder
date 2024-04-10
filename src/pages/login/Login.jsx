@@ -19,7 +19,7 @@ export const Login = () => {
   const location = useLocation();
   const previousUrl = location.state;
 
-  const API_URL = import.meta.env.VITE_API_URL || "${API_URL}";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
   const handleLogin = async (event) => {
     event.preventDefault();

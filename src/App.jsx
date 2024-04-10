@@ -3,8 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { AboutUs } from "./pages/about-us/AboutUs.jsx";
 import { Home } from "./pages/home/Home.jsx";
 import { NavBar } from "./components/navbar/NavBar.jsx";
-import { Deck } from "./pages/deck/Deck.jsx";
-import { UserProfile } from "./pages/user-profile/UserProfile.jsx";
 import { useContext } from "react";
 import { ThemeContext } from "./context/theme.context.jsx";
 import { CreateDeck } from "./pages/create-deck/CreateDeck.jsx";

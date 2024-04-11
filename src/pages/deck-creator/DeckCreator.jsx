@@ -218,9 +218,9 @@ export const DeckCreator = () => {
                     <Link to={`/card/${card._id}`}>- {card.name}</Link>
                     <div>mana cost: {card.mana_cost}</div>
 
-                    <button className="btn" onClick={() => handleDeleteCard(index)}>
-                      Delete
-                    </button>
+                    <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                      <i className="fa-solid fa-trash" />
+                    </div>
                   </div>
                 ) : (
                   <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
@@ -241,9 +241,9 @@ export const DeckCreator = () => {
                       <Link to={`/card/${card._id}`}>- {card.name}</Link>
                       <div>mana cost: {card.mana_cost}</div>
 
-                      <button className="btn" onClick={() => handleDeleteCard(index)}>
-                        Delete
-                      </button>
+                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                        <i className="fa-solid fa-trash" />
+                      </div>
                     </div>
                   ) : (
                     <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
@@ -265,9 +265,9 @@ export const DeckCreator = () => {
                       <Link to={`/card/${card._id}`}>- {card.name}</Link>
                       <div>mana cost: {card.mana_cost}</div>
 
-                      <button className="btn" onClick={() => handleDeleteCard(index)}>
-                        Delete
-                      </button>
+                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                        <i className="fa-solid fa-trash" />
+                      </div>
                     </div>
                   ) : (
                     <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
@@ -289,9 +289,9 @@ export const DeckCreator = () => {
                       <Link to={`/card/${card._id}`}>- {card.name}</Link>
                       <div>mana cost: {card.mana_cost}</div>
 
-                      <button className="btn" onClick={() => handleDeleteCard(index)}>
-                        Delete
-                      </button>
+                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                        <i className="fa-solid fa-trash" />
+                      </div>
                     </div>
                   ) : (
                     <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
@@ -313,9 +313,9 @@ export const DeckCreator = () => {
                       <Link to={`/card/${card._id}`}>- {card.name}</Link>
                       <div>mana cost: {card.mana_cost}</div>
 
-                      <button className="btn" onClick={() => handleDeleteCard(index)}>
-                        Delete
-                      </button>
+                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                        <i className="fa-solid fa-trash" />
+                      </div>
                     </div>
                   ) : (
                     <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>

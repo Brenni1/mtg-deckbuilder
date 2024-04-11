@@ -71,9 +71,17 @@ export const Login = () => {
         <button className="btn">Login</button>
       </form>
 
-      <Link to="/signup">
-        <button className="btn">Sign Up</button>
-      </Link>
+      <div className="sign-up-container">
+        <div>
+          <i className="fa-solid fa-arrow-down" />
+          <div>If you don't have an account yet, sign up here</div>
+          <i className="fa-solid fa-arrow-down" />
+        </div>
+        <Link to="/signup">
+          <button className="btn">Sign Up</button>
+        </Link>
+      </div>
+
       {error ? <h4 className="error-message">{error}</h4> : null}
     </div>
   );

@@ -11,6 +11,7 @@ export const HomeDeckContainer = () => {
   const { user } = useContext(AuthContext);
   const [populatedUser, setPopulatedUser] = useState();
   const theToken = localStorage.getItem("authToken");
+  const { isLoggedIn } = useContext(AuthContext);
 
   // populating the Userprofile with the Users Decks
   const populateUser = async () => {
@@ -39,12 +40,13 @@ export const HomeDeckContainer = () => {
   console.log("The populated User:", populatedUser);
   // console.log("The populated Usersdecktitle:", populatedUser.decks);
   if (!populatedUser) {
-    return <p> loading...</p>;
+    return;
   }
 
   return (
     <div className="deck-area">
       {populatedUser &&
+        isLoggedIn &&
         populatedUser.decks.map((deck) => (
           <Link to={`/deck/${deck._id}`} key={deck._id}>
             <DeckThumbnail

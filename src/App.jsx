@@ -34,6 +34,7 @@ function App() {
         />
         <Route
           path="/create-deck"
+          q
           element={
             <IsProtected>
               <CreateDeck />

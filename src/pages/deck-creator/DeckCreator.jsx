@@ -151,7 +151,7 @@ export const DeckCreator = () => {
         <div className="deck-desc">
           <textarea name="deckdescription" value={deckInfo.deckdescription} onChange={handleChange} />
           <button className="btn" onClick={handleUpdateCards}>
-            Update Deck
+            Save Description
           </button>
         </div>
         <div className="deck-stats">Deck Stats</div>
@@ -213,15 +213,16 @@ export const DeckCreator = () => {
       </div>
       <div className="deck-cards-container">
         <div className="deck-all-cards">
+          <div className="deck-card-category">All Cards</div>
           {cardsInDeck
             ? cardsInDeck.map((card, index) =>
                 cardView === "text" ? (
                   <div className="deck-card text" key={card.id}>
                     <Link to={`/card/${card._id}`} state={location.pathname}>
-                      - {card.name}
+                      {card.name}
                     </Link>
                     <div className="deck-card-info">
-                      <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                      <div>{card.mana_cost ? card.mana_cost : "-"}</div>
                       <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
                         <i className="fa-solid fa-trash" />
                       </div>
@@ -244,10 +245,10 @@ export const DeckCreator = () => {
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
                       <Link to={`/card/${card._id}`} state={location.pathname}>
-                        - {card.name}
+                        {card.name}
                       </Link>
                       <div className="deck-card-info">
-                        <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                        <div>{card.mana_cost ? card.mana_cost : "-"}</div>
                         <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
                           <i className="fa-solid fa-trash" />
                         </div>
@@ -264,17 +265,17 @@ export const DeckCreator = () => {
             : null}
         </div>
         <div className="deck-sorcery-cards">
-          <div className="deck-card-category">Sorcery</div>
+          <div className="deck-card-category">Sorcery & Instant</div>
           {cardsInDeck
             ? cardsInDeck.map((card, index) =>
-                card.type_line.toLowerCase().includes("sorcery") ? (
+                card.type_line.toLowerCase().includes("sorcery") || card.type_line.toLowerCase().includes("instant") ? (
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
                       <Link to={`/card/${card._id}`} state={location.pathname}>
-                        - {card.name}
+                        {card.name}
                       </Link>
                       <div className="deck-card-info">
-                        <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                        <div>{card.mana_cost ? card.mana_cost : "-"}</div>
                         <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
                           <i className="fa-solid fa-trash" />
                         </div>
@@ -298,7 +299,7 @@ export const DeckCreator = () => {
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
                       <Link to={`/card/${card._id}`} state={location.pathname}>
-                        - {card.name}
+                        {card.name}
                       </Link>
                       <div className="deck-card-info">
                         <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
@@ -325,7 +326,7 @@ export const DeckCreator = () => {
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
                       <Link to={`/card/${card._id}`} state={location.pathname}>
-                        - {card.name}
+                        {card.name}
                       </Link>
                       <div className="deck-card-info">
                         <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>

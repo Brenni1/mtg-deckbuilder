@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { ThemeContext } from "../../context/theme.context.jsx";
 import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
 import dragonImg from "../../assets/imgs/logo-dragon.png";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -69,6 +70,10 @@ export const Login = () => {
         </label>
         <button className="btn">Login</button>
       </form>
+
+      <Link to="/signup">
+        <button className="btn">Sign Up</button>
+      </Link>
       {error ? <h4 className="error-message">{error}</h4> : null}
     </div>
   );

@@ -13,7 +13,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-image: var(--background-img);
+  /* background-image: var(--background-img); */
+  background-image: url(https://cards.scryfall.io/art_crop/front/c/c/cc9cfcc7-be64-4871-8d52-851e43fe3305.jpg);
   background-size: 75%;
   background-repeat: no-repeat;
   background-position: right 0 top 20%;

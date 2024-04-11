@@ -7,9 +7,11 @@ import deckImg5 from "../../assets/imgs/card-imgs/5.jpg";
 import deckImg6 from "../../assets/imgs/card-imgs/6.jpg";
 import deckImg7 from "../../assets/imgs/card-imgs/7.jpg";
 
-export const DeckThumbnail = ({ deckname, deckdescription, deckcolors, decktags }) => {
+export const DeckThumbnail = ({ deckname, deckdescription, deckcolors, decktags, popUser }) => {
   const imgArray = [deckImg1, deckImg2, deckImg3, deckImg4, deckImg5, deckImg6, deckImg7];
   const rndImg = imgArray[Math.floor(Math.random() * imgArray.length)];
+
+  console.log(popUser);
 
   return (
     <div className="deck-thumbnail" style={{ "--background-img": `url(${rndImg})` }}>

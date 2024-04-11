@@ -55,6 +55,7 @@ export const HomeDeckContainer = () => {
               deckname={deck.decktitle}
               decktags={deck.decktags}
               deckcolors={deck.deckcolors}
+              popUser={populatedUser}
             />
           </Link>
         ))}

@@ -7,6 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Environment Variables should NEVER be published
+.env
+
 node_modules
 dist
 dist-ssr

@@ -8,10 +8,12 @@ export const IsProtected = ({ children }) => {
   const location = useLocation();
   const [isAuthChecked, setIsAuthChecked] = useState(false);
 
+  // checking if the User is loggedIn
+
   useEffect(() => {
     if (isLoading) {
       console.log("loading");
-      return; // No need to return anything here
+      return;
     }
 
     if (!isLoggedIn) {
@@ -20,7 +22,7 @@ export const IsProtected = ({ children }) => {
     } else {
       setIsAuthChecked(true);
     }
-  }, [isLoading, isLoggedIn, nav, location.pathname]);
+  }, [isLoading, isLoggedIn, nav, location.pathname]); // rechecking every time when one of the dependencies changes
 
   if (!isAuthChecked) {
     return <div>Loading...</div>;

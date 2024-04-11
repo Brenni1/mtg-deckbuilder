@@ -6,10 +6,15 @@ const theToken = localStorage.getItem("authToken");
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export const DeckListItem = ({ title, format, colors, date }) => {
+  //
   const { user } = useContext(AuthContext);
   const [decks, setDecks] = useState("");
   const deckId = user.decks;
+
   console.log("Userlog from the DeckListItemComponent", user);
+
+  // handling Deckdeletion
+
   const handleDelete = async (deckToDelete) => {
     try {
       await fetch(`${API_URL}/user/deck/${deckId}`, {
@@ -19,7 +24,7 @@ export const DeckListItem = ({ title, format, colors, date }) => {
         },
       });
 
-      // Update the UserModel with the deckId
+      // removing the DeckId from the Usermodel
       const updatedUser = await axios.put(`${API_URL}/user/${user._id}`, { $pull: { decks: deckId } });
       console.log("This is the updated User", updatedUser.data.updatedUser);
 

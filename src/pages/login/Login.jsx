@@ -1,13 +1,11 @@
 import "./Login.css";
 import { useContext, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ThemeContext } from "../../context/theme.context.jsx";
 import dragonWhiteImg from "../../assets/imgs/logo-dragon-white.png";
 import dragonImg from "../../assets/imgs/logo-dragon.png";
-
-import { useLocation } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,6 +26,7 @@ export const Login = () => {
       const response = await axios.post(`${API_URL}/auth/login`, userToLogin);
       console.log("you logged in successfully");
 
+      // putting the Token in the localStorage
       localStorage.setItem("authToken", response.data.authToken);
 
       await authenticateUser();

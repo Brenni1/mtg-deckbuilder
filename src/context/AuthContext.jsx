@@ -54,7 +54,6 @@ const AuthWrapper = ({ children }) => {
     await authenticateUser();
   };
   return (
-    //the value is basically the fridge, where all the food is stored
     <AuthContext.Provider
       value={{
         user,

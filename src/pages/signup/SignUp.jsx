@@ -18,7 +18,7 @@ export const SignUp = () => {
 
   const handleSignup = async (event) => {
     event.preventDefault();
-
+    // handling UserSignUp
     const userToCreate = { name, email, password };
     try {
       const response = await axios.post(`${API_URL}/auth/register`, userToCreate);

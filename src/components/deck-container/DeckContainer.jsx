@@ -8,11 +8,11 @@ import { Link } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export const HomeDeckContainer = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [populatedUser, setPopulatedUser] = useState();
   const theToken = localStorage.getItem("authToken");
-  // const [decks, setDecks] = useState([]);
 
+  // populating the Userprofile with the Users Decks
   const populateUser = async () => {
     try {
       const userId = user._id;
@@ -29,6 +29,7 @@ export const HomeDeckContainer = () => {
     }
   };
 
+  //  making sure there is a User before trying to populate and rerunning should the User change
   useEffect(() => {
     if (user) {
       populateUser();
@@ -55,13 +56,6 @@ export const HomeDeckContainer = () => {
             />
           </Link>
         ))}
-      {/* <DeckThumbnail deckImg="7" />
-      <DeckThumbnail deckImg="2" />
-      <DeckThumbnail deckImg="3" />
-      <DeckThumbnail deckImg="4" />
-      <DeckThumbnail deckImg="5" />
-      <DeckThumbnail deckImg="6" />
-      <DeckThumbnail deckImg="7" /> */}
     </div>
   );
 };

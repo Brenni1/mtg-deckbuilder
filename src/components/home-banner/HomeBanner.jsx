@@ -11,6 +11,7 @@ export const HomeBanner = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  // handling Backendside of Cardsearch
   const handleSearch = async (e) => {
     e.preventDefault();
     try {

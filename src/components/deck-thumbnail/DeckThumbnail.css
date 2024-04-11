@@ -3,9 +3,6 @@
   border: 1px solid var(--box-border-color);
   border-radius: 0.5rem;
   height: 16rem;
-  min-width: 21rem;
-  width: 30%;
-  max-width: 34rem;
   background-image: var(--background-img);
   background-position: 50% 15%;
   background-size: 100%;

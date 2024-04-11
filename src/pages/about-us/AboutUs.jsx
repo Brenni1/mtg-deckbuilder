@@ -11,29 +11,14 @@ export const AboutUs = () => {
   const phillipLinkedIn = "https://www.linkedin.com/in/phillip-brenndoerfer/";
   const benGitHub = "https://github.com/bendfriedman";
   const benLinkedIn = "https://www.linkedin.com/in/benjamindfriedman/";
-  const onurGitHub = "/";
-  const onurLinkedIn = "/";
+  const onurGitHub = "https://github.com/onurcangulpak";
+  const onurLinkedIn = "https://www.linkedin.com/in/onurcangulpak/";
 
   return (
     <div className="about-us">
-      <DevCard
-        devImg={phillipImg}
-        devName="Phillip Brendörfer"
-        gitHub={phillipGitHub}
-        linkedIn={phillipLinkedIn}
-      />
-      <DevCard
-        devImg={benImg}
-        devName="Benjamin Friedman"
-        gitHub={benGitHub}
-        linkedIn={benLinkedIn}
-      />
-      <DevCard
-        devImg={onurImg}
-        devName="Onurcan Gülpak"
-        gitHub={onurGitHub}
-        linkedIn={onurLinkedIn}
-      />
+      <DevCard devImg={phillipImg} devName="Phillip Brendörfer" gitHub={phillipGitHub} linkedIn={phillipLinkedIn} />
+      <DevCard devImg={benImg} devName="Benjamin Friedman" gitHub={benGitHub} linkedIn={benLinkedIn} />
+      <DevCard devImg={onurImg} devName="Onurcan Gülpak" gitHub={onurGitHub} linkedIn={onurLinkedIn} />
     </div>
   );
 };

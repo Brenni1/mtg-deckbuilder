@@ -1,9 +1,20 @@
+.deck-area-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .deck-area {
   background-color: var(--main-bg-color);
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  padding: 3rem 1rem 6rem 1rem;
-  text-align: center;
+  row-gap: 0.8rem;
+  justify-content: space-between;
+  padding: 3rem 8rem 6rem 8rem;
+}
+
+.deck-area a {
+  width: 33%;
+  min-width: 21rem;
+  max-width: 34rem;
+  height: 16rem;
 }

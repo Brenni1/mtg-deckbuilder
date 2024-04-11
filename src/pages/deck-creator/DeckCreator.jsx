@@ -1,7 +1,7 @@
 import "./DeckCreator.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/theme.context.jsx";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import userImg from "../../assets/imgs/user.png";
 import userWhiteImg from "../../assets/imgs/user_white.png";
@@ -12,6 +12,7 @@ import axios from "axios";
 import deckImg4 from "../../assets/imgs/card-imgs/4.jpg";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 export const DeckCreator = () => {
+  const location = useLocation();
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(AuthContext);
   const { id } = useParams();
@@ -41,8 +42,8 @@ export const DeckCreator = () => {
     try {
       const cardIds = cardsInDeck.map((card) => card._id);
       const combinedData = {
-        ...deckInfo,
-        cards: cardIds,
+        ...deckInfo, //spreading the deckInfo we got from the backend
+        cards: cardIds, // updating the cardIds
       };
       const res = await fetch(`${API_URL}/user/deck/${id}`, {
         method: "PUT",
@@ -62,14 +63,12 @@ export const DeckCreator = () => {
     getdeckInfo();
   }, [id]);
 
-  // autosave Feature //
+  // autosave Feature since our backendUpdate gets called everytime the cardsInDeck change //
   useEffect(() => {
     if (cardsInDeck) {
       handleUpdateCards();
     }
   }, [cardsInDeck]);
-
-  // autosave Feature //
 
   //handling Changes to the genereal DeckInfo
   const handleChange = (e) => {
@@ -89,6 +88,8 @@ export const DeckCreator = () => {
   const [searchValue, setSearchValue] = useState("");
   const [allSearchedCards, setAllSearchedCards] = useState(null);
 
+  //searching in the Backend
+
   const findCard = async (search) => {
     try {
       const res = await axios.get(`${API_URL}/user/card/search?q=${search}`);
@@ -99,6 +100,7 @@ export const DeckCreator = () => {
     }
   };
 
+  //autocomplete bc the search is run automatically when the .length is exceeded
   const onSearchChange = (e) => {
     setSearchValue(e.target.value);
     if (searchValue.length > 1) {
@@ -106,6 +108,7 @@ export const DeckCreator = () => {
     }
   };
 
+  // adding a Card to the Deck
   const addCard = (newCard) => {
     setSearchValue("");
     console.log("newCard", newCard);
@@ -126,7 +129,6 @@ export const DeckCreator = () => {
     setCardView(e.target.value);
   };
 
-  //safetycheck to prevent Errors
   if (!deckInfo) {
     return <div>Loading...</div>;
   }
@@ -215,15 +217,18 @@ export const DeckCreator = () => {
             ? cardsInDeck.map((card, index) =>
                 cardView === "text" ? (
                   <div className="deck-card text" key={card.id}>
-                    <Link to={`/card/${card._id}`}>- {card.name}</Link>
-                    <div>mana cost: {card.mana_cost}</div>
-
-                    <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
-                      <i className="fa-solid fa-trash" />
+                    <Link to={`/card/${card._id}`} state={location.pathname}>
+                      - {card.name}
+                    </Link>
+                    <div className="deck-card-info">
+                      <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                        <i className="fa-solid fa-trash" />
+                      </div>
                     </div>
                   </div>
                 ) : (
-                  <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                  <Link className="deck-card card-img" to={`/card/${card._id}`} state={location.pathname} key={card.id}>
                     <img src={card.image_uris.normal} alt="card" />
                     <div className="card-hover-box" />
                   </Link>
@@ -238,15 +243,18 @@ export const DeckCreator = () => {
                 card.type_line.toLowerCase().includes("creature") ? (
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
-                      <Link to={`/card/${card._id}`}>- {card.name}</Link>
-                      <div>mana cost: {card.mana_cost}</div>
-
-                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
-                        <i className="fa-solid fa-trash" />
+                      <Link to={`/card/${card._id}`} state={location.pathname}>
+                        - {card.name}
+                      </Link>
+                      <div className="deck-card-info">
+                        <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                        <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                          <i className="fa-solid fa-trash" />
+                        </div>
                       </div>
                     </div>
                   ) : (
-                    <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                    <Link className="deck-card card-img" to={`/card/${card._id}`} state={location.pathname} key={card.id}>
                       <img src={card.image_uris.normal} alt="card" />
                       <div className="card-hover-box" />
                     </Link>
@@ -262,15 +270,18 @@ export const DeckCreator = () => {
                 card.type_line.toLowerCase().includes("sorcery") ? (
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
-                      <Link to={`/card/${card._id}`}>- {card.name}</Link>
-                      <div>mana cost: {card.mana_cost}</div>
-
-                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
-                        <i className="fa-solid fa-trash" />
+                      <Link to={`/card/${card._id}`} state={location.pathname}>
+                        - {card.name}
+                      </Link>
+                      <div className="deck-card-info">
+                        <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                        <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                          <i className="fa-solid fa-trash" />
+                        </div>
                       </div>
                     </div>
                   ) : (
-                    <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                    <Link className="deck-card card-img" to={`/card/${card._id}`} state={location.pathname} key={card.id}>
                       <img src={card.image_uris.normal} alt="card" />
                       <div className="card-hover-box" />
                     </Link>
@@ -286,15 +297,18 @@ export const DeckCreator = () => {
                 card.type_line.toLowerCase().includes("artifact") ? (
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
-                      <Link to={`/card/${card._id}`}>- {card.name}</Link>
-                      <div>mana cost: {card.mana_cost}</div>
-
-                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
-                        <i className="fa-solid fa-trash" />
+                      <Link to={`/card/${card._id}`} state={location.pathname}>
+                        - {card.name}
+                      </Link>
+                      <div className="deck-card-info">
+                        <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                        <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                          <i className="fa-solid fa-trash" />
+                        </div>
                       </div>
                     </div>
                   ) : (
-                    <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                    <Link className="deck-card card-img" to={`/card/${card._id}`} state={location.pathname} key={card.id}>
                       <img src={card.image_uris.normal} alt="card" />
                       <div className="card-hover-box" />
                     </Link>
@@ -310,15 +324,18 @@ export const DeckCreator = () => {
                 card.type_line.toLowerCase().includes("land") ? (
                   cardView === "text" ? (
                     <div className="deck-card text" key={card.id}>
-                      <Link to={`/card/${card._id}`}>- {card.name}</Link>
-                      <div>mana cost: {card.mana_cost}</div>
-
-                      <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
-                        <i className="fa-solid fa-trash" />
+                      <Link to={`/card/${card._id}`} state={location.pathname}>
+                        - {card.name}
+                      </Link>
+                      <div className="deck-card-info">
+                        <div>mana cost: {card.mana_cost ? card.mana_cost : "-"}</div>
+                        <div className="delete-icon" onClick={() => handleDeleteCard(index)}>
+                          <i className="fa-solid fa-trash" />
+                        </div>
                       </div>
                     </div>
                   ) : (
-                    <Link className="deck-card card-img" to={`/card/${card._id}`} key={card.id}>
+                    <Link className="deck-card card-img" to={`/card/${card._id}`} state={location.pathname} key={card.id}>
                       <img src={card.image_uris.normal} alt="card" />
                       <div className="card-hover-box" />
                     </Link>

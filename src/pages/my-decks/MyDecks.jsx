@@ -13,14 +13,17 @@ export const MyDecks = () => {
   const [decks, setDecks] = useState([]);
   const theToken = localStorage.getItem("authToken");
 
+  // getting Details about all the Decks of a User
   const getDecks = async () => {
     try {
       const deckIds = user.decks;
+      // checking if the User has any Decks
       if (deckIds.length === 0) {
         console.log("No deckIds found");
         return;
       }
       const fetchedDecks = [];
+      // if the User has Decks, we are using a for of loop to send a request for each one to get the Details
       for (const deckId of deckIds) {
         const res = await fetch(`${API_URL}/user/deck/${deckId}`, {
           headers: {
@@ -37,13 +40,15 @@ export const MyDecks = () => {
     }
   };
 
+  // running the getDecks on mount
   useEffect(() => {
     getDecks();
-  }, [user.decks]);
+  }, []);
 
   console.log("deckslog", decks);
   console.log("userlog", user);
 
+  // handling Deckdeletion
   const handleDelete = async (deckToDelete) => {
     try {
       await fetch(`${API_URL}/user/deck/${deckToDelete}`, {
@@ -54,7 +59,7 @@ export const MyDecks = () => {
       });
 
       setDecks(decks.filter((deck) => deck._id !== deckToDelete));
-
+      // removing the DeckId from the User
       const updatedDecks = user.decks.filter((deck) => deck !== deckToDelete);
       setUser({ ...user, decks: updatedDecks });
     } catch (err) {
